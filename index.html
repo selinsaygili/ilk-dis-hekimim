@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Çocuğunuzun diş sağlığı için uzman rehberi. Hamileden 12 yaşa kadar her aşamada doğru bilgi." />
+  <title>İlk Diş Hekimim | Çocuk Diş Sağlığı Rehberi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { font-family: 'Nunito', sans-serif; box-sizing: border-box; }
+    .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0)   scale(1);    }
+    }
+    .card-hover { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease; }
+    .card-hover:hover  { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
+    .card-hover:active { transform: translateY(-1px) scale(0.99); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-sky-50 via-white to-pink-50">
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+/* ─── COLORS ─── */
+const COLORS = {
+  purple: {
+    buttonBg: 'bg-purple-100', buttonHover: 'hover:bg-purple-200', border: 'border-purple-200',
+    text: 'text-purple-800', subtext: 'text-purple-600', emojiBg: 'bg-purple-200',
+    headerBg: 'bg-gradient-to-r from-purple-100 to-purple-50',
+    noteBg: 'bg-purple-50', noteBorder: 'border-l-purple-400', noteText: 'text-purple-900',
+    breadcrumb: 'bg-purple-100 text-purple-700', dot: 'bg-purple-400',
+  },
+  amber: {
+    buttonBg: 'bg-amber-100', buttonHover: 'hover:bg-amber-200', border: 'border-amber-200',
+    text: 'text-amber-800', subtext: 'text-amber-600', emojiBg: 'bg-amber-200',
+    headerBg: 'bg-gradient-to-r from-amber-100 to-amber-50',
+    noteBg: 'bg-amber-50', noteBorder: 'border-l-amber-400', noteText: 'text-amber-900',
+    breadcrumb: 'bg-amber-100 text-amber-700', dot: 'bg-amber-400',
+  },
+  pink: {
+    buttonBg: 'bg-pink-100', buttonHover: 'hover:bg-pink-200', border: 'border-pink-200',
+    text: 'text-pink-800', subtext: 'text-pink-600', emojiBg: 'bg-pink-200',
+    headerBg: 'bg-gradient-to-r from-pink-100 to-pink-50',
+    noteBg: 'bg-pink-50', noteBorder: 'border-l-pink-400', noteText: 'text-pink-900',
+    breadcrumb: 'bg-pink-100 text-pink-700', dot: 'bg-pink-400',
+  },
+  sky: {
+    buttonBg: 'bg-sky-100', buttonHover: 'hover:bg-sky-200', border: 'border-sky-200',
+    text: 'text-sky-800', subtext: 'text-sky-600', emojiBg: 'bg-sky-200',
+    headerBg: 'bg-gradient-to-r from-sky-100 to-sky-50',
+    noteBg: 'bg-sky-50', noteBorder: 'border-l-sky-400', noteText: 'text-sky-900',
+    breadcrumb: 'bg-sky-100 text-sky-700', dot: 'bg-sky-400',
+  },
+  teal: {
+    buttonBg: 'bg-teal-100', buttonHover: 'hover:bg-teal-200', border: 'border-teal-200',
+    text: 'text-teal-800', subtext: 'text-teal-600', emojiBg: 'bg-teal-200',
+    headerBg: 'bg-gradient-to-r from-teal-100 to-teal-50',
+    noteBg: 'bg-teal-50', noteBorder: 'border-l-teal-400', noteText: 'text-teal-900',
+    breadcrumb: 'bg-teal-100 text-teal-700', dot: 'bg-teal-400',
+  },
+};
+
+/* ─── AGE GROUPS ─── */
+const AGE_GROUPS = [
+  { id: 'pregnant', label: 'Hamileyim',  emoji: '🤰', desc: 'Gebelik & bebek diş sağlığı',     colorKey: 'purple' },
+  { id: '0-1',      label: '0–1 Yaş',   emoji: '👶', desc: 'İlk dişler & bebek bakımı',        colorKey: 'amber'  },
+  { id: '1-3',      label: '1–3 Yaş',   emoji: '🧒', desc: 'Küçük çocuk dönemi',               colorKey: 'pink'   },
+  { id: '3-6',      label: '3–6 Yaş',   emoji: '🧒', desc: 'Okul öncesi dönem',                colorKey: 'sky'    },
+  { id: '6-12',     label: '6–12 Yaş',  emoji: '🧑', desc: 'Okul çağı & kalıcı dişler',        colorKey: 'teal'   },
+];
+
+/* ─── TOPICS ─── */
+const TOPICS = {
+  pregnant: [
+    {
+      id: 'dental-visit', label: 'Diş Hekimi Ziyareti', emoji: '🦷',
+      card: {
+        title: 'Hamileyken Diş Hekimine Gidebilir miyim?',
+        summary: 'Evet! Gebelik döneminde rutin diş muayenesi ve temizlik tamamen güvenlidir. Aksine, tedavi edilmemiş diş eti enfeksiyonları erken doğum riskini artırabilir.',
+        tips: [
+          '2. trimester (4–6. aylar) planlamalı müdahaleler için en uygun dönemdir',
+          'Acil diş tedavileri gebeliğin her döneminde yapılabilir',
+          'Diş hekiminize hamileliğinizi ve kullandığınız ilaçları mutlaka bildirin',
+          'Gerekirse kurşun önlük kullanılarak röntgen güvenle çekilebilir',
+        ],
+        note: 'Gebelikte hormonal değişimler "gebelik gingivitisi" adı verilen diş eti iltihabına yol açabilir. 3 ayda bir kontrol ziyareti önerilir.',
+      },
+    },
+    {
+      id: 'nutrition', label: 'Beslenme & Diş Sağlığı', emoji: '🥛',
+      card: {
+        title: 'Bebeğin Dişleri İçin Hamilelikte Beslenme',
+        summary: 'Bebeğin diş tomurcukları gebeliğin 6. haftasından itibaren gelişmeye başlar. Kalsiyum ve D vitamini bu dönemde kritik önem taşır.',
+        tips: [
+          'Günde 1000 mg kalsiyum alın (süt, yoğurt, peynir, brokoli)',
+          'D vitamini takviyesi için doktorunuza danışın',
+          'Şekerli ve asitli içeceklerden kaçının',
+          'Bulantı/kusma sonrası 30 dakika bekleyip fırçalayın; mide asidi mineyi aşındırabilir',
+        ],
+        note: 'Sabah bulantısı çok yoğunsa, kusma sonrası ağzınızı su ile çalkalayın. Hemen fırçalamak mineye zarar verebilir.',
+      },
+    },
+    {
+      id: 'baby-teeth-info', label: 'Bebek Dişleri Hakkında', emoji: '🍼',
+      card: {
+        title: 'Bebeğimin Dişleri Ne Zaman Çıkar?',
+        summary: 'Süt dişlerinin tamamı (20 diş) genellikle 2,5–3 yaşına kadar çıkar. İlk diş ise ortalama 6. ayda görülür.',
+        tips: [
+          'İlk çıkan dişler genellikle alt ön kesicilerdir (~6. ay)',
+          '2,5–3 yaşına kadar tüm 20 süt dişi tamamlanır',
+          '12. ayda hiç diş görünmüyorsa pedodontiste danışın',
+          'Erken veya geç çıkma tek başına bir sorun belirtisi değildir',
+        ],
+        note: 'Süt dişleri "geçici" değildir! Çiğneme, konuşma gelişimi ve kalıcı dişlere yer tutması açısından hayati öneme sahiptir.',
+      },
+    },
+    {
+      id: 'oral-hygiene-preg', label: 'Ağız Hijyeni', emoji: '🪥',
+      card: {
+        title: 'Hamilelikte Ağız Bakımı Nasıl Olmalı?',
+        summary: 'Hormonal değişimler bu dönemde diş eti kanamasını ve hassasiyetini artırır. Günlük bakım alışkanlıklarınızı sürdürmek her zamankinden daha önemlidir.',
+        tips: [
+          'Günde 2 kez, 2 dakika florürlü macunla fırçalayın',
+          'Günlük diş ipi kullanımını ihmal etmeyin',
+          'Yumuşak kıllı diş fırçası seçin',
+          'Gargara kullanacaksanız alkolsüz ürünleri tercih edin',
+        ],
+        note: 'Gebelik gingivitisi doğumdan sonra kendiliğinden hafifleyebilir; ancak tedavi edilmezse kronik periodontitise dönüşme riski taşır.',
+      },
+    },
+  ],
+
+  '0-1': [
+    {
+      id: 'first-tooth', label: 'İlk Diş Ne Zaman Çıkar?', emoji: '⭐',
+      card: {
+        title: 'İlk Diş Çıkma Süreci',
+        summary: 'İlk diş genellikle 6. ayda görülür; ancak 4–12. ay arasında çıkması da tamamen normaldir. Erken veya geç çıkması diş sağlığı ile ilgili bir sorun anlamına gelmez.',
+        tips: [
+          'İlk çıkan dişler genellikle alt orta kesicilerdir',
+          '2,5–3 yaşına kadar tüm 20 süt dişi tamamlanır',
+          '12. ayda hiç diş yoksa pedodontiste başvurun',
+          'Diş çıkarma sırası ve zamanı her çocukta farklı olabilir',
+        ],
+        note: 'Diş çıkarma sırası "normal" aralıktan sapsa bile endişelenmeyin. Her çocuk kendi hızında gelişir.',
+      },
+    },
+    {
+      id: 'teething', label: 'Diş Çıkarma Belirtileri', emoji: '😢',
+      card: {
+        title: 'Diş Çıkarmayı Kolaylaştırmanın Yolları',
+        summary: 'Diş çıkarma döneminde bebekler huzursuz olabilir, salya akışı artabilir ve diş eti şişip kızarabilir. Bu normal bir süreçtir.',
+        tips: [
+          'Soğutulmuş (dondurmadan) diş çıkarma halkası verin',
+          'Temiz ve serin bir gazlı bezle diş etini hafifçe masaj yapın',
+          'Yoğun ağrıda pediatristin onayıyla ibuprofen/parasetamol kullanılabilir',
+          'Diş çıkarma jelleri önerilmez — bebek yutabilir',
+        ],
+        note: 'Yüksek ateş, ishal veya döküntü diş çıkarmanın değil, başka bir hastalığın belirtisi olabilir. Mutlaka doktora danışın.',
+      },
+    },
+    {
+      id: 'oral-care-0-1', label: 'Ağız Temizliği', emoji: '🪥',
+      card: {
+        title: 'Diş Öncesi ve Diş Sonrası Ağız Bakımı',
+        summary: 'Henüz diş çıkmamış olsa bile bebeğin ağız hijyenine önem verilmelidir. Diş gelmeden önce diş etleri, çıktıktan sonra ise dişler temizlenmelidir.',
+        tips: [
+          'Diş çıkmadan: ıslak gazlı bez ile diş etlerini günde 2 kez silin',
+          'İlk dişten itibaren: küçük başlıklı, yumuşak bebek diş fırçası kullanın',
+          'Pirinç tanesi büyüklüğünde florürlü macun kullanın (0–3 yaş)',
+          'Her emzirmeden sonra bir yudum su verin',
+        ],
+        note: 'Bebeği biberon ile uyutmak "biberon çürüğü" olarak bilinen ciddi bir çürük türüne yol açabilir. Biberonu asla yatakta bırakmayın.',
+      },
+    },
+    {
+      id: 'first-visit', label: 'İlk Diş Hekimi Ziyareti', emoji: '🏥',
+      card: {
+        title: 'İlk Ziyaret Ne Zaman Yapılmalı?',
+        summary: 'İlk diş hekimi ziyareti, ilk dişin çıkmasından sonraki 6 ay içinde veya en geç 1 yaşında yapılmalıdır.',
+        tips: [
+          'İlk ziyaret tanışma ve değerlendirme amaçlıdır — tedavi gerekmeyebilir',
+          'Diş hekimi fırçalama tekniği ve beslenme konusunda rehberlik yapar',
+          'Erken ziyaret ilerleyen dönemde diş hekimi korkusunu önler',
+          'Florür uygulaması bu dönemde başlanabilir',
+        ],
+        note: 'Çocuklar ilk ziyaretlerini ne kadar erken yaparlarsa, ilerleyen dönemde diş hekimine olan güvenleri o kadar sağlam olur.',
+      },
+    },
+  ],
+
+  '1-3': [
+    {
+      id: 'brushing-1-3', label: 'Fırçalama Nasıl Yapılır?', emoji: '🪥',
+      card: {
+        title: '1–3 Yaş Diş Fırçalama Rehberi',
+        summary: 'Bu yaş grubunda fırçalamayı ebeveyn yapar. Çocuğun fırçayı tutmasına izin verin, ama asıl temizliği siz yapın.',
+        tips: [
+          'Küçük başlıklı, yumuşak kıllı çocuk diş fırçası kullanın',
+          'Pirinç tanesi kadar florürlü macun (3 yaşına kadar)',
+          'Günde 2 kez, sabah ve akşam yatmadan önce fırçalayın',
+          'Her dişin ön, arka ve çiğneme yüzeyini nazikçe fırçalayın',
+        ],
+        note: 'Çocukların motor becerileri 6–7 yaşına kadar etkin fırçalamaya yetmez. Bu yaşa kadar ebeveyn denetimi zorunludur.',
+      },
+    },
+    {
+      id: 'fluoride', label: 'Florürlü Diş Macunu', emoji: '🔬',
+      card: {
+        title: 'Florür: Ne Kadar Güvenli?',
+        summary: 'Florür, diş çürüklerini önleyen en etkili bileşenlerden biridir. Doğru miktarda kullanıldığında 0 yaşından itibaren güvenlidir.',
+        tips: [
+          '0–3 yaş: pirinç tanesi (~0,1 ml) florürlü macun',
+          '3–6 yaş: bezelye tanesi (~0,25 ml) florürlü macun',
+          '6 yaş ve üzeri: normal miktara geçilebilir',
+          'Çocukların macunu yutmamasını öğretin; küçük miktarlar zararsızdır',
+        ],
+        note: 'Türkiye\'de içme suyu florürlenmediğinden diş fırçası tek florür kaynağıdır. Florürlü macun kullanımı bu nedenle özellikle önemlidir.',
+      },
+    },
+    {
+      id: 'bottle-caries', label: 'Biberon Çürüğü', emoji: '🍼',
+      card: {
+        title: 'Biberon Çürüğü Nedir, Nasıl Önlenir?',
+        summary: 'Biberon çürüğü (Erken Çocukluk Çürüğü), bebeğin uzun süre biberonla veya anne sütüyle uyuması sonucu gelişen hızlı ve yaygın bir çürük türüdür.',
+        tips: [
+          'Biberonu asla yatakta veya uyurken vermeyin',
+          'Şekerli içecekleri (meyve suyu, komposto) biberona koymayın',
+          'Gece beslenmesinin ardından dişleri silin ya da su içirin',
+          'Emzikleri asla bal, şeker veya meyve suyu ile ıslatmayın',
+        ],
+        note: 'Biberon çürüğü çok hızlı ilerler ve tüm süt dişlerini etkileyebilir. Erken tanı ve tedavi kritik önem taşır.',
+      },
+    },
+    {
+      id: 'nutrition-1-3', label: 'Beslenme & Şeker', emoji: '🍎',
+      card: {
+        title: 'Diş Sağlığı İçin Beslenme Önerileri',
+        summary: 'Şeker tüketiminin sıklığı, miktarı kadar önemlidir. Gün boyunca sürekli şeker almak, tek seferde yemekten çok daha zararlıdır.',
+        tips: [
+          'Şekerli atıştırmalıkları belirli öğün saatlerine kısıtlayın',
+          'Meyve suyunu sınırlayın, yerine meyvenin kendisini verin',
+          'Su en iyi içecek seçeneğidir',
+          'Kuru meyve (kuru üzüm, incir) dişe yapışır — dikkatli tüketin',
+        ],
+        note: 'Gece süt içen çocuklarda bile çürük oluşabilir. İçtikten sonra mutlaka dişleri fırçalayın ya da su içirin.',
+      },
+    },
+  ],
+
+  '3-6': [
+    {
+      id: 'milk-teeth', label: 'Süt Dişleri Neden Önemli?', emoji: '🦷',
+      card: {
+        title: 'Süt Dişleri Neden Bu Kadar Önemli?',
+        summary: '"Zaten düşecek, ne önemi var?" düşüncesi yanlıştır. Süt dişleri 12 yaşa kadar ağızda kalır ve kritik işlevler üstlenir.',
+        tips: [
+          'Çiğneme ve sağlıklı beslenmeye olanak tanır',
+          'Doğru konuşma ve ses üretimine katkı sağlar',
+          'Kalıcı dişler için yer tutar; erken kaybedilirse ortodontik sorunlara yol açar',
+          'Çürük süt dişleri altındaki kalıcı dişleri de etkileyebilir',
+        ],
+        note: 'Ağrı veren veya enfeksiyon oluşturan süt dişlerini tedavi etmek ya da çekmek, çocuğun genel sağlığı için zorunludur.',
+      },
+    },
+    {
+      id: 'brushing-independence', label: 'Fırçalama Bağımsızlığı', emoji: '💪',
+      card: {
+        title: 'Çocuğum Kendi Başına Fırçalayabilir mi?',
+        summary: 'Çocukların el-göz koordinasyonu 6–7 yaşına kadar yeterince gelişmez. Bu yaş grubunda fırçalamayı ebeveyn denetlemeli veya tamamlamalıdır.',
+        tips: [
+          'Önce çocuğun kendi fırçalamasına izin verin, sonra siz bitirin',
+          'Boya tableti ile hangi dişlerin temizlenmediğini birlikte görün',
+          'Elektrikli diş fırçası bu yaşta çok daha etkilidir',
+          '2 dakika fırçalamak için eğlenceli zamanlayıcı uygulamaları kullanın',
+        ],
+        note: '"Aynaya bak" testi: Çocuk kendi yüzünü boyayabiliyorsa dişlerini de fırçalayabilir. Bu genellikle 6–7 yaşta gerçekleşir.',
+      },
+    },
+    {
+      id: 'pacifier', label: 'Emzik & Parmak Emme', emoji: '👍',
+      card: {
+        title: 'Emzik ve Parmak Emmeyi Ne Zaman Bırakmalı?',
+        summary: '3 yaşından sonra da devam eden emzik ve parmak emme alışkanlığı diş ve çene gelişimini olumsuz etkileyebilir.',
+        tips: [
+          '3 yaşından sonra emzik kullanımını yavaş yavaş azaltmaya başlayın',
+          'Parmak emme 4 yaşından sonra sürüyorsa müdahale gerekebilir',
+          'Baskı ve ceza yerine olumlu pekiştirme yöntemlerini deneyin',
+          'Gerekirse pedodontist ağız içi aparey önerebilir',
+        ],
+        note: 'Kısa süreli alışkanlıklar genellikle kendiliğinden düzelir. Kalıcı hasar için uzun süreli ve yoğun alışkanlık gerekir — paniklemeden diş hekiminize danışın.',
+      },
+    },
+    {
+      id: 'dental-injury', label: 'Diş Yaralanmaları', emoji: '🚨',
+      card: {
+        title: 'Dişi Kırıldı veya Düştü! Ne Yapmalıyım?',
+        summary: 'Diş yaralanmaları bu yaş grubunda sık görülür. Sakin kalın ve hızlı hareket edin.',
+        tips: [
+          '🔴 Kalıcı diş düştüyse: kökten tutmayın, sütün içinde saklayın, 30–60 dk içinde diş hekimine gidin',
+          '🟡 Süt dişi düştüyse: geri takmaya çalışmayın, diş hekimini arayın',
+          'Kırık diş parçasını varsa saklayın',
+          'Kanama varsa temiz bez ile hafifçe bastırın',
+        ],
+        note: 'Süt dişi yaralanmaları altındaki kalıcı dişi etkileyebilir. Görünürde sorun olmasa bile yaralanma sonrası pedodontiste mutlaka gidin.',
+      },
+    },
+  ],
+
+  '6-12': [
+    {
+      id: 'permanent-teeth', label: 'Kalıcı Dişler', emoji: '✨',
+      card: {
+        title: 'Kalıcı Dişler Ne Zaman Çıkar?',
+        summary: 'Kalıcı dişler genellikle 6 yaşından itibaren çıkmaya başlar. İlk gelen kalıcı dişler alt 6\'lılar (1. büyük azı) ve alt orta kesicilerdir.',
+        tips: [
+          '6 yaş: Alt orta kesiciler ve 1. büyük azılar',
+          '7–8 yaş: Üst kesiciler',
+          '9–12 yaş: Köpek dişleri ve küçük azılar',
+          '12–13 yaş: 2. büyük azılar',
+        ],
+        note: 'Yeni çıkan kalıcı dişlerin minesi henüz tam sertleşmemiştir ve çürüğe karşı daha savunmasızdır. Bu dönemde florür uygulaması ve fissür örtücü özellikle önemlidir.',
+      },
+    },
+    {
+      id: 'fissure-sealant', label: 'Fissür Örtücü', emoji: '🛡️',
+      card: {
+        title: 'Fissür Örtücü Nedir ve Gerekli mi?',
+        summary: 'Fissür örtücüler, arka dişlerin derin oluk ve çukurlarını kapatan ince koruyucu bir tabakadır. Çürük oluşumunu %80\'e varan oranda azaltır.',
+        tips: [
+          '6 yaşlık azılar çıktıktan hemen sonra uygulanabilir',
+          '12 yaşlık azılara da uygulanması önerilir',
+          'Ağrısız, birkaç dakikada tamamlanan bir işlemdir',
+          'Yılda bir kontrol ile etkinliği takip edilmelidir',
+        ],
+        note: 'Fissür örtücü, koruyucu diş hekimliğinin en güçlü araçlarından biridir. Zamanında uygulamak, ilerideki büyük dolgu veya kanal tedavisinin önüne geçebilir.',
+      },
+    },
+    {
+      id: 'orthodontics', label: 'Ortodonti', emoji: '😁',
+      card: {
+        title: 'Ortodonti Değerlendirmesi Ne Zaman Yapılmalı?',
+        summary: 'Amerikan Ortodonti Derneği 7 yaşında ilk ortodontik değerlendirmeyi önerir. Bu hemen tedavi başlatmak için değil, sorunları erken fark etmek içindir.',
+        tips: [
+          '7 yaşında pedodontist veya ortodontiste değerlendirme yaptırın',
+          'Çapraşık dişler, geri veya ileri çeneye erken müdahale daha etkilidir',
+          'Bazı tedaviler (plak, fonksiyonel aparey) süt dişi döneminde başlar',
+          'Tüm kalıcı dişler çıkmadan braket tedavisi genellikle başlamaz',
+        ],
+        note: 'Her çocuğun ortodonti tedavisi görmesine gerek yoktur. Değerlendirme yaptırmak hem sorunları hem de gereksiz müdahaleleri önler.',
+      },
+    },
+    {
+      id: 'sports-guard', label: 'Spor & Ağız Koruyucu', emoji: '⚽',
+      card: {
+        title: 'Sporcu Çocuklarda Diş Koruması',
+        summary: 'Temaslı spor aktivitelerinde (futbol, basketbol, bisiklet vb.) diş yaralanmaları çok sık görülür. Özel yapım ağız koruyucular bu riski büyük ölçüde azaltır.',
+        tips: [
+          'Temaslı spora başlayan her çocuğa ağız koruyucu önerilir',
+          'Eczaneden alınan hazır koruyucular yerine diş hekiminden yaptırılan özel olanlar daha etkilidir',
+          'Büyüme döneminde yılda bir yenilenmesi gerekebilir',
+          'Her antrenmanda takın, sonra durulayıp saklayın',
+        ],
+        note: 'Ağız koruyucu dişleri, dudakları ve çeneyi korur. Maliyeti, tek bir kırık dişin tedavisinin çok altındadır.',
+      },
+    },
+  ],
+};
+
+/* ─── HEADER ─── */
+function Header({ step, selectedAge, onReset, onBackToTopics }) {
+  const ageGroup = selectedAge ? AGE_GROUPS.find(g => g.id === selectedAge) : null;
+  const c = ageGroup ? COLORS[ageGroup.colorKey] : null;
+  return (
+    <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
+      <div className="max-w-2xl mx-auto px-4 py-3">
+        <div className="flex items-center gap-2 cursor-pointer group" onClick={onReset}>
+          <span className="text-3xl">🦷</span>
+          <div>
+            <div className="text-lg font-black text-gray-800 leading-tight group-hover:text-sky-600 transition-colors">
+              İlk Diş Hekimim
+            </div>
+            <div className="text-xs text-gray-400 font-medium">Çocuk Diş Sağlığı Rehberi</div>
+          </div>
+        </div>
+        {step !== 'home' && ageGroup && (
+          <nav className="mt-2 flex items-center gap-1.5 text-sm fade-in">
+            <button onClick={onReset} className="text-gray-400 hover:text-gray-600 transition-colors text-xs">
+              Ana Sayfa
+            </button>
+            <span className="text-gray-300">›</span>
+            <button
+              onClick={step === 'card' ? onBackToTopics : undefined}
+              className={`px-2 py-0.5 rounded-full text-xs font-bold ${c.breadcrumb} ${step === 'card' ? 'cursor-pointer hover:opacity-75 transition-opacity' : 'cursor-default'}`}
+            >
+              {ageGroup.emoji} {ageGroup.label}
+            </button>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+}
+
+/* ─── HOME VIEW ─── */
+function HomeView({ onSelectAge }) {
+  return (
+    <div className="pt-10 pb-8 fade-in">
+      <div className="text-center mb-10">
+        <div className="text-6xl mb-4">🦷</div>
+        <h2 className="text-3xl sm:text-4xl font-black text-gray-800 mb-3 leading-tight">
+          Çocuğunuz<br />
+          <span className="text-sky-500">kaç yaşında?</span>
+        </h2>
+        <p className="text-gray-500 font-semibold text-base max-w-xs mx-auto">
+          Yaşa özel uzman rehberine ulaşmak için bir seçenek tıklayın
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {AGE_GROUPS.map((group) => {
+          const c = COLORS[group.colorKey];
+          return (
+            <button
+              key={group.id}
+              onClick={() => onSelectAge(group.id)}
+              className={`card-hover text-left p-5 rounded-2xl border-2 ${c.buttonBg} ${c.buttonHover} ${c.border} transition-colors duration-150 focus:outline-none`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`text-3xl w-14 h-14 flex items-center justify-center rounded-xl ${c.emojiBg} flex-shrink-0`}>
+                  {group.emoji}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className={`text-xl font-extrabold ${c.text}`}>{group.label}</div>
+                  <div className={`text-sm font-semibold ${c.subtext} mt-0.5`}>{group.desc}</div>
+                </div>
+                <span className={`${c.subtext} text-xl font-bold`}>›</span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      <p className="text-center text-xs text-gray-400 mt-10 font-medium">
+        👩‍⚕️ Pedodonti uzmanı tarafından hazırlanmıştır
+      </p>
+    </div>
+  );
+}
+
+/* ─── TOPICS VIEW ─── */
+function TopicsView({ ageId, onSelectTopic, onBack }) {
+  const ageGroup = AGE_GROUPS.find(g => g.id === ageId);
+  const c = COLORS[ageGroup.colorKey];
+  const topics = TOPICS[ageId] || [];
+  return (
+    <div className="pt-8 pb-8 fade-in">
+      <div className={`${c.headerBg} rounded-2xl p-5 mb-8 border-2 ${c.border}`}>
+        <div className="flex items-center gap-4">
+          <span className="text-5xl">{ageGroup.emoji}</span>
+          <div>
+            <h2 className={`text-2xl font-black ${c.text}`}>{ageGroup.label}</h2>
+            <p className={`${c.subtext} font-semibold text-sm`}>{ageGroup.desc}</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 className="text-lg font-extrabold text-gray-700 mb-4 text-center">
+        Hangi konuyu merak ediyorsunuz? 🔍
+      </h3>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {topics.map((topic) => (
+          <button
+            key={topic.id}
+            onClick={() => onSelectTopic(topic.id)}
+            className={`card-hover text-left p-4 rounded-xl border-2 ${c.buttonBg} ${c.buttonHover} ${c.border} transition-colors duration-150 focus:outline-none`}
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">{topic.emoji}</span>
+              <span className={`font-bold ${c.text} flex-1`}>{topic.label}</span>
+              <span className={`${c.subtext} font-bold`}>›</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <button
+        onClick={onBack}
+        className="mt-5 w-full py-3 rounded-xl border-2 border-gray-200 text-gray-500 font-bold hover:bg-gray-50 transition-colors"
+      >
+        ← Geri Dön
+      </button>
+    </div>
+  );
+}
+
+/* ─── INFO CARD VIEW ─── */
+function InfoCardView({ ageId, topicId, onBack }) {
+  const ageGroup = AGE_GROUPS.find(g => g.id === ageId);
+  const c = COLORS[ageGroup.colorKey];
+  const topic = TOPICS[ageId].find(t => t.id === topicId);
+  const card = topic.card;
+  return (
+    <div className="pt-8 pb-8 fade-in">
+      <div className={`rounded-2xl border-2 ${c.border} overflow-hidden shadow-lg`}>
+        {/* Card Header */}
+        <div className={`${c.headerBg} p-6 border-b ${c.border}`}>
+          <div className="flex items-start gap-4">
+            <div className={`text-4xl w-14 h-14 flex items-center justify-center rounded-xl ${c.emojiBg} flex-shrink-0`}>
+              {topic.emoji}
+            </div>
+            <h2 className={`text-xl font-black ${c.text} leading-snug pt-1`}>
+              {card.title}
+            </h2>
+          </div>
+        </div>
+
+        {/* Card Body */}
+        <div className="bg-white p-6 space-y-6">
+          {/* Summary */}
+          <p className="text-gray-700 font-semibold leading-relaxed">
+            {card.summary}
+          </p>
+
+          {/* Tips */}
+          <div>
+            <h3 className={`font-extrabold ${c.text} mb-3 flex items-center gap-2`}>
+              <span>📋</span> Önemli Bilgiler
+            </h3>
+            <ul className="space-y-3">
+              {card.tips.map((tip, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className={`mt-1.5 ${c.dot} w-2 h-2 rounded-full flex-shrink-0 inline-block`} />
+                  <span className="text-gray-600 font-semibold leading-snug text-sm">{tip}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Doctor Note */}
+          <div className={`${c.noteBg} border-l-4 ${c.noteBorder} p-4 rounded-r-xl`}>
+            <div className={`font-extrabold ${c.text} text-sm mb-1.5 flex items-center gap-1.5`}>
+              <span>👩‍⚕️</span> Uzman Notu
+            </div>
+            <p className={`${c.noteText} text-sm font-semibold leading-relaxed`}>
+              {card.note}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button
+        onClick={onBack}
+        className={`mt-4 w-full py-3 rounded-xl border-2 ${c.border} ${c.text} ${c.buttonBg} ${c.buttonHover} font-bold transition-colors`}
+      >
+        ← Diğer Konular
+      </button>
+    </div>
+  );
+}
+
+/* ─── APP ─── */
+function App() {
+  const [step, setStep] = useState('home');
+  const [selectedAge, setSelectedAge] = useState(null);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  const handleSelectAge = (ageId) => {
+    setSelectedAge(ageId);
+    setSelectedTopic(null);
+    setStep('topics');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectTopic = (topicId) => {
+    setSelectedTopic(topicId);
+    setStep('card');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToHome = () => {
+    setStep('home');
+    setSelectedAge(null);
+    setSelectedTopic(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToTopics = () => {
+    setStep('topics');
+    setSelectedTopic(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header
+        step={step}
+        selectedAge={selectedAge}
+        onReset={handleBackToHome}
+        onBackToTopics={handleBackToTopics}
+      />
+      <main className="max-w-2xl mx-auto px-4 w-full flex-1">
+        {step === 'home'   && <HomeView onSelectAge={handleSelectAge} />}
+        {step === 'topics' && <TopicsView ageId={selectedAge} onSelectTopic={handleSelectTopic} onBack={handleBackToHome} />}
+        {step === 'card'   && <InfoCardView ageId={selectedAge} topicId={selectedTopic} onBack={handleBackToTopics} />}
+      </main>
+      <footer className="text-center py-6 text-xs text-gray-400 font-medium">
+        © 2025 İlk Diş Hekimim · Uzman Pedodonti Rehberi
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
