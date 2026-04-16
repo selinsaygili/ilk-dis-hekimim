@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Çocuğunuzun diş sağlığı için uzman rehberi. Hamileden 12 yaşa kadar her aşamada doğru bilgi." />
-  <title>İlk Diş Hekimim | Çocuk Diş Sağlığı Rehberi</title>
+  <title>İlk diş hekimim | Çocuğunuz için ağız ve diş sağlığı rehberi</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
@@ -72,9 +72,9 @@ const COLORS = {
 
 /* ─── AGE GROUPS ─── */
 const AGE_GROUPS = [
-  { id: 'pregnant', label: 'Hamileyim',  emoji: '🤰', desc: 'Gebelik & bebek diş sağlığı',     colorKey: 'purple' },
-  { id: '0-1',      label: '0–1 Yaş',   emoji: '👶', desc: 'İlk dişler & bebek bakımı',        colorKey: 'amber'  },
-  { id: '1-3',      label: '1–3 Yaş',   emoji: '🧒', desc: 'Küçük çocuk dönemi',               colorKey: 'pink'   },
+  { id: 'pregnant', label: 'Hamileyim',  emoji: '🤰', desc: 'Gebelik & ağız ve diş sağlığı',     colorKey: 'purple' },
+  { id: '0-1',      label: '0–1 Yaş',   emoji: '👶', desc: 'İlk dişler',        colorKey: 'amber'  },
+  { id: '1-3',      label: '1–3 Yaş',   emoji: '🧒', desc: 'Bebeklik dönemi',               colorKey: 'pink'   },
   { id: '3-6',      label: '3–6 Yaş',   emoji: '🧒', desc: 'Okul öncesi dönem',                colorKey: 'sky'    },
   { id: '6-12',     label: '6–12 Yaş',  emoji: '🧑', desc: 'Okul çağı & kalıcı dişler',        colorKey: 'teal'   },
 ];
@@ -85,12 +85,12 @@ const TOPICS = {
     {
       id: 'dental-visit', label: 'Diş Hekimi Ziyareti', emoji: '🦷',
       card: {
-        title: 'Hamileyken Diş Hekimine Gidebilir miyim?',
-        summary: 'Hamilelik planlıyorsanız veya hamileyseniz, diş hekiminizi ziyaret ederek mevcut ağız sağlığınızı kontrol ettirmelisiniz. Gebelik döneminde rutin diş muayenesi ve temizlik tamamen güvenlidir. Aksine, tedavi edilmemiş diş eti enfeksiyonları erken doğum riskini artırabilir.',
+        title: 'Hamileyken diş hekimine gidebilir miyim?',
+        summary: 'Hamilelik planlıyorsanız veya hamileyseniz, diş hekiminizi ziyaret ederek mevcut ağız sağlığınızı kontrol ettirmelisiniz. Gebelik döneminde rutin diş muayenesi tamamen güvenlidir. Tedavi edilmemiş diş eti enfeksiyonları ise erken doğum riskini artırabilmektedir.',
         tips: [
           '2. trimester (4–6. aylar) planlamalı müdahaleler için en uygun dönemdir',
           'Acil diş tedavileri gebeliğin her döneminde yapılabilir',
-          'Diş hekiminize hamileliğinizi ve kullandığınız ilaçları mutlaka bildirin',
+          'Diş hekiminize hamileliğinizi ve kullandığınız ilaçları mutlaka bildirmelisiniz',
           'Gerekirse kurşun önlük kullanılarak röntgen güvenle çekilebilir',
         ],
         note: 'Gebelikte hormonal değişimler "gebelik gingivitisi" adı verilen diş eti iltihabına yol açabilir. 3 ayda bir kontrol ziyareti önerilir.',
@@ -100,26 +100,26 @@ const TOPICS = {
       id: 'nutrition', label: 'Beslenme & Diş Sağlığı', emoji: '🥛',
       card: {
         title: 'Bebeğin Dişleri İçin Hamilelikte Beslenme',
-        summary: 'Annenin ağzındaki aşırı bakteri çoğalması diş etlerinden kana karışarak rahme ulaşabilir ve erken doğumu tetikleyebilecek kimyasalları uyarabilir. Kendi ağız sağlığınıza dikkat etmek, doğum sonrası bebeğinize geçebilecek çürük yapıcı bakteri sayısını azaltır.',
+        summary: 'Annenin ağzındaki aşırı bakteri çoğalması diş etlerinden kana karışarak rahme ulaşabilir ve erken doğumu tetikleyebilecek kimyasalları uyarabilir. Kendi ağız sağlığınıza dikkat etmek, doğum sonrası bebeğinize geçebilecek çürük yapıcı bakteri sayısını azaltmaktadır.',
         tips: [
-          'Kalsiyum ve D vitamini bu dönemde kritik önem taşır.',
-          'D vitamini takviyesi için doktorunuza danışın',
-          'Folik asit içeren prenatal vitaminler çok önemlidir ancak çiğnenebilir formdaki (kapsül veya tablet) vitaminler şeker içerir ve dişlere yapışabilir.',
-          'Şekerli ve asitli içeceklerden kaçının',
-          'Bulantı/kusma sonrası 30 dakika bekleyip fırçalayın; mide asidi mineyi aşındırabilir',
+          'Kalsiyum ve D vitamini bu dönemde kritik önem taşımaktadır.',
+          'D vitamini takviyesi için doktorunuza danışmalısınız.',
+          'Folik asit içeren prenatal vitaminler çok önemlidir ancak çiğnenebilir formdaki (kapsül veya tablet) vitaminler şeker içerebilirler ve dişlere yapışabilirler.',
+          'Şekerli ve asitli içeceklerden kaçınmalısnız.',
+          'Bulantı/kusma sonrası 30 dakika bekleyip fırçalamalısnız aksi halde mide asidi dişlerinizin mide tabakasını aşındırabilir.',
         ],
-        note: 'Sabah bulantısı çok yoğunsa, kusma sonrası ağzınızı su ile çalkalayın. Hemen fırçalamak mineye zarar verebilir.',
+        note: 'Sabah bulantınız çok yoğun olduğunda kusma sonrası ağzınızı su ile çalkalayabilirsiniz. Hemen fırçalamak isemineye zarar verebilir.',
       },
     },
     {
-      id: 'baby-teeth-info', label: 'Bebek Dişleri Hakkında', emoji: '🍼',
+      id: 'baby-teeth-info', label: 'Süt Dişleri Hakkında', emoji: '🍼',
       card: {
         title: 'Bebeğimin Dişleri Ne Zaman Çıkar?',
-        summary: 'Süt dişlerinin tamamı (20 diş) genellikle 2,5–3 yaşına kadar çıkar. İlk diş ise ortalama 6. ayda görülür.',
+        summary: 'Süt dişlerinin tamamı (20 diş) genellikle 2,5–3 yaşına kadar çıkmaktadır. İlk diş ise ortalama 6. ayda görülmektedir.',
         tips: [
-          'İlk çıkan dişler genellikle alt ön kesicilerdir (~6. ay)',
-          '2,5–3 yaşına kadar tüm 20 süt dişi tamamlanır',
-          '12. ayda hiç diş görünmüyorsa pedodontiste danışın',
+          'İlk çıkan dişler genellikle alt ön kesiciler olmaktadır (~6. ay)',
+          '2,5–3 yaşına kadar tüm 20 süt dişi tamamlanmaktadır',
+          '12. ayda hiç diş görünmüyorsa pedodontistinize danışmalısınız',
           'Erken veya geç çıkma tek başına bir sorun belirtisi değildir',
         ],
         note: 'Süt dişleri "geçici" değildir! Çiğneme, konuşma gelişimi ve kalıcı dişlere yer tutması açısından hayati öneme sahiptir.',
@@ -129,30 +129,30 @@ const TOPICS = {
       id: 'oral-hygiene-preg', label: 'Ağız Hijyeni', emoji: '🪥',
       card: {
         title: 'Hamilelikte Ağız Bakımı Nasıl Olmalı?',
-        summary: 'Hormonal değişimler bu dönemde diş eti kanamasını ve hassasiyetini artırır. Günlük bakım alışkanlıklarınızı sürdürmek her zamankinden daha önemlidir.',
+        summary: 'Hormonal değişimler bu dönemde diş eti kanamasını ve hassasiyetini artırmaktadır. Günlük bakım alışkanlıklarınızı sürdürmek her zamankinden daha önemlidir.',
         tips: [
-          'Günde 2 kez, 2 dakika florürlü macunla fırçalayın',
-          'Günlük diş ipi kullanımını ihmal etmeyin',
-          'Yumuşak kıllı diş fırçası seçin',
-          'Gargara kullanacaksanız alkolsüz ürünleri tercih edin',
+          'Günde 2 kez, 2 dakika florürlü macunla fırçalamalısınız',
+          'Günlük diş ipi kullanımını ihmal etmemelisiniz',
+          'Yumuşak kıllı diş fırçası seçmelisiniz',
+          'Gargara kullanacaksanız alkolsüz ürünleri tercih etmelisiniz',
           'Kusma sonrası hemen fırçalamayın — önce ağzınızı su veya florürlü gargara ile çalkalayın, 30 dakika sonra fırçalayın',
         ],
-        note: 'Gebelik gingivitisi doğumdan sonra kendiliğinden hafifleyebilir; ancak tedavi edilmezse kronik periodontitise dönüşme riski taşır.',
+        note: 'Gebelik gingivitisi doğumdan sonra kendiliğinden hafifleyebilir; ancak tedavi edilmezse kronik periodontitise dönüşme riski taşımaktadır.',
       },
     },
     {
-      id: 'pregnancy-effects', label: 'Gebeliğin Ağza Etkileri', emoji: '🤱',
+      id: 'pregnancy-effects', label: 'Gebeliğin Ağız Sağlığına Etkileri', emoji: '🤱',
       card: {
         title: 'Gebelik Ağız Sağlığımı Nasıl Etkiler?',
-        summary: 'Gebelik döneminde ağız ve diş sağlığının kötüleşmesi oldukça yaygındır. Yorgunluk, hormonal değişimler ve beslenme alışkanlıkları bu süreçte belirleyici rol oynar.',
+        summary: 'Gebelik döneminde ağız ve diş sağlığının kötüleşmesi oldukça yaygındır. Yorgunluk, hormonal değişimler ve beslenme alışkanlıkları bu süreçte belirleyici rol oynamaktadır.',
         tips: [
-          '😴 Yorgunluk: Gebelik bitkinliği, akşam fırçalama ve diş ipi kullanımının atlanmasına yol açabilir — bu da plak ve çürük riskini artırır',
-          '🩸 Hormonal değişimler: "Gebelik gingivitisi" — şiş, kızarık ve kolayca kanayan diş etleri — bu dönemde sık görülür; tedavi edilmezse kemik kaybına dönüşebilir',
-          '🤢 Sabah bulantısı: Mide asidinin ağza ulaşması mine tabakasını aşındırır ve çürük riskini artırır',
-          '🍎 Sık atıştırma: Dişleri sürekli asitle temas ettirir; asit seven bakterilerin (Streptococcus mutans) üremesini hızlandırır',
-          '💊 Sakızlı/jöle vitaminler: Dişe yapışır ve çoğu şeker içerir — tablet veya kapsül formunu tercih edin; yatmadan önce sakızlı vitamin almaktan kaçının',
+          '😴 Yorgunluk: Gebelik bitkinliği, akşam fırçalama ve diş ipi kullanımının atlanmasına yol açabilmektedir bu da plak oluşumunuve çürük riskini artırmaktadır',
+          '🩸 Hormonal değişimler: "Gebelik gingivitisi" yani şiş, kızarık ve kolayca kanayan diş etleri bu dönemde sık görülmektedir; tedavi edilmezse kemik kaybına dönüşebilmektedir',
+          '🤢 Sabah bulantısı: Mide asidinin ağza ulaşması mine tabakasını aşındırmaktadır ve çürük riskini artırmaktadırır',
+          '🍎 Sık atıştırma: Dişleri sürekli asitle temas ettirir; asit seven bakterilerin üremesini hızlandırmaktadır',
+          '💊 Sakızlı/jöle vitaminler: Dişe yapışmakta ve çoğu şeker içermektedir. Yatmadan önce sakızlı vitamin almaktan kaçınmalısınız',
         ],
-        note: 'Araştırmalar, tedavi edilmemiş diş eti hastalığının erken doğum ve düşük doğum ağırlığı ile ilişkili olduğuna işaret etmektedir. Gebelikte diş hekimi kontrolünü atlamayın.',
+        note: 'Araştırmalar, tedavi edilmemiş diş eti hastalığının erken doğum ve düşük doğum ağırlığı ile ilişkili olduğuna işaret etmektedir.',
       },
     },
     {
@@ -161,9 +161,9 @@ const TOPICS = {
         title: 'Ağız Sağlığınız Bebeğinizi Nasıl Etkiler?',
         summary: 'Ağız sağlığınız yalnızca sizi değil, bebeğinizi de doğrudan etkiler. Ağzınızdaki bakteri dengesi hem gebelik sürecini hem de doğum sonrasını şekillendirebilir.',
         tips: [
-          '🦠 Diş etinden kana geçen bakteriler rahime ulaşarak prostaglandin salgılanmasını tetikleyebilir — bu da erken doğuma yol açabilir',
-          '👶 Dikey geçiş (vertical transmission): Doğumdan sonra ağız bakterileriniz bebeğinize aktarılabilir',
-          '🍬 Annedeki asit seven bakteri yoğunluğu yüksekse bebek de bu bakterilerle başlar — ilerleyen dönemde erken diş çürüğü riski artar',
+          '🦠 Diş etinden kana geçen bakteriler rahime ulaşarak erken doğuma yol açabilir',
+          '👶 Dikey geçiş: Doğumdan sonra ağız bakterileriniz bebeğinize aktarılabilir',
+          '🍬 Annedeki asit seven bakteri yoğunluğu yüksekse bebek de bu bakterilerle hayata başlar ve ilerleyen dönemde erken diş çürüğü riski artar',
           '🪥 Gebelikte florürlü macunla günde en az 2 kez fırçalamak bebeğin doğum sonrası diş enfeksiyonu riskini de azaltır',
         ],
         note: 'Hamilelikte dişlerinizi fırçaladığınızda, aslında iki kişi için fırçılıyorsunuz! İyi bir ağız hijyeni hem sizi hem de bebeğinizi korur.',
