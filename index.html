@@ -208,7 +208,7 @@ const TOPICS = {
         tips: [
           'Diş çıkmadan: ıslak gazlı bez ile diş etlerini günde 2 kez silin',
           'İlk dişten itibaren: küçük başlıklı, yumuşak bebek diş fırçası kullanın',
-          'Pirinç tanesi büyüklüğünde florürlü macun kullanın (0–3 yaş)',
+          { text: 'Pirinç tanesi büyüklüğünde florürlü macun kullanın (0–3 yaş)', img: '0-3.png' },
           'Her emzirmeden sonra bir yudum su verin',
         ],
         note: 'Bebeği biberon ile uyutmak "biberon çürüğü" olarak bilinen ciddi bir çürük türüne yol açabilir. Biberonu asla yatakta bırakmayın.',
@@ -570,12 +570,25 @@ function InfoCardView({ ageId, topicId, onBack }) {
               <span>📋</span> Önemli Bilgiler
             </h3>
             <ul className="space-y-3">
-              {card.tips.map((tip, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className={`mt-1.5 ${c.dot} w-2 h-2 rounded-full flex-shrink-0 inline-block`} />
-                  <span className="text-gray-600 font-semibold leading-snug text-sm">{tip}</span>
-                </li>
-              ))}
+              {card.tips.map((tip, i) => {
+                const tipText = typeof tip === 'string' ? tip : tip.text;
+                const tipImg  = typeof tip === 'string' ? null : tip.img;
+                return (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className={`mt-1.5 ${c.dot} w-2 h-2 rounded-full flex-shrink-0 inline-block`} />
+                    <span className="text-gray-600 font-semibold leading-snug text-sm">
+                      {tipText}
+                      {tipImg && (
+                        <img
+                          src={tipImg}
+                          alt={tipText}
+                          className="mt-2 block rounded-xl max-w-[220px] border border-gray-100 shadow-sm"
+                        />
+                      )}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
