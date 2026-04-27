@@ -85,43 +85,45 @@ const AGE_GROUPS = [
 
 /* ─── TOPICS ─── */
 const TOPICS = {
-  pregnant: [
-            {
-                id: 'dental-visit',
-                label: 'Diş Hekimi Ziyareti',
-                emoji: '🦷',
-                card: {
-                    title: 'Hamileyken diş hekimine gidebilir miyim?',
-                    summary: 'Hamilelik planlıyorsanız veya hamileyseniz, diş hekiminizi ziyaret ederek mevcut ağız sağlığınızı kontrol ettirmelisiniz. Gebelik döneminde rutin diş muayenesi tamamen güvenlidir. Tedavi edilmemiş diş eti enfeksiyonları ise erken doğum riskini artırabilmektedir.',
-                    tips: [
-                        '2. trimester (4–6. aylar) planlamalı müdahaleler için en uygun dönemdir',
-                        'Acil diş tedavileri gebeliğin her döneminde yapılabilir',
-                        'Diş hekiminize hamileliğinizi ve kullandığınız ilaçları mutlaka bildirmelisiniz',
-                        'Gerekirse kurşun önlük kullanılarak röntgen güvenle çekilebilir',
-                        'Mide bulantısı sonrası ağzınızı karbonatlı suyla (1 bardak suya 1 çay kaşığı karbonat) çalkalayarak diş minesini koruyabilirsiniz.'
-                    ],
-                    note: 'Gebelikte hormonal değişimler diş eti iltihabına (gebelik gingivitisi) yol açabilir. 3 ayda bir kontrol ziyareti önerilir.',
-                    extra: 'Annedeki tedavi edilmemiş çürükler, bakterilerin bebeğe geçmesine ve çocukluk döneminde erken diş çürüklerine yol açma riskini 3 kat artırabilir.'
-                }
+        pregnant: [
+          {
+            id: 'dental-visit',
+            label: 'Diş Hekimi Ziyareti',
+            emoji: '🦷',
+            card: {
+              title: 'Hamileyken diş hekimine gidebilir miyim?',
+              summary: 'Hamilelik planlıyorsanız veya hamileyseniz, diş hekiminizi ziyaret ederek mevcut ağız sağlığınızı kontrol ettirmelisiniz. Gebelik döneminde rutin diş muayenesi tamamen güvenlidir. Tedavi edilmemiş diş eti enfeksiyonları ise erken doğum riskini artırabilmektedir.',
+              tips: [
+                '2. trimester (4–6. aylar) planlamalı müdahaleler için en uygun dönemdir',
+                'Acil diş tedavileri gebeliğin her döneminde yapılabilir',
+                'Diş hekiminize hamileliğinizi ve kullandığınız ilaçları mutlaka bildirmelisiniz',
+                'Gerekirse kurşun önlük kullanılarak röntgen güvenle çekilebilir',
+                'Mide bulantısı sonrası diş minesini korumak için ağzınızı karbonatlı suyla (1 bardak suya 1 çay kaşığı karbonat) çalkalayabilirsiniz.'
+              ],
+              note: 'Gebelikte hormonal değişimler diş eti iltihabına yol açabilir. 3 ayda bir kontrol ziyareti önerilir.',
+              extra: 'Annedeki tedavi edilmemiş çürükler, bakterilerin bebeğe geçmesine ve çocukluk döneminde erken diş çürüklerine yol açma riskini 3 kat artırabilir.'
             }
+          }
         ],
-    ],
-    {
-      id: 'nutrition', label: 'Beslenme & Diş Sağlığı', emoji: '🥛',
-      card: {
-        title: 'Bebeğin Dişleri İçin Hamilelikte Beslenme',
-        summary: 'Annenin ağzındaki aşırı bakteri çoğalması diş etlerinden kana karışarak rahme ulaşabilir ve erken doğumu tetikleyebilecek kimyasalları uyarabilir. Kendi ağız sağlığınıza dikkat etmek, doğum sonrası bebeğinize geçebilecek çürük yapıcı bakteri sayısını azaltmaktadır.',
-        tips: [
-          'Kalsiyum ve D vitamini bu dönemde kritik önem taşımaktadır.',
-          'D vitamini takviyesi için doktorunuza danışmalısınız.',
-          'Folik asit içeren prenatal vitaminler çok önemlidir ancak çiğnenebilir formdaki (kapsül veya tablet) vitaminler şeker içerebilirler ve dişlere yapışabilirler.',
-          'Şekerli ve asitli içeceklerden kaçınmalısnız.',
-          'Bulantı/kusma sonrası 30 dakika bekleyip fırçalamalısnız aksi halde mide asidi dişlerinizin mide tabakasını aşındırabilir.',
-        ],
-        note: 'Sabah bulantınız çok yoğun olduğunda kusma sonrası ağzınızı su ile çalkalayabilirsiniz. Hemen fırçalamak isemineye zarar verebilir.',
-      },
-    },
-    {
+        nutrition: [
+          {
+            id: 'nutrition',
+            label: 'Beslenme & Diş Sağlığı',
+            emoji: '🥛',
+            card: {
+              title: 'Bebeğin Dişleri İçin Hamilelikte Beslenme',
+              summary: 'Bebeğinizin diş gelişimi anne karnında başlar. Kalsiyum, fosfor ve vitaminlerden zengin bir diyet hem sizin hem de bebeğinizin diş sağlığı için temeldir.',
+              tips: [
+                'Peynir, süt ve yoğurt gibi kalsiyum kaynaklarını tüketin',
+                'Şekerli atıştırmalıklardan kaçınarak çürük riskini azaltın',
+                'Günde en az 2 litre su içmeyi ihmal etmeyin'
+              ],
+              note: 'Bebeğinizin süt dişleri hamileliğin 3. ve 6. ayları arasında kireçlenmeye başlar.',
+              extra: 'Sağlıklı bir beslenme alışkanlığı, bebeğinizin diş minesinin daha dirençli olmasını sağlar.'
+            }
+          }
+        ]
+      };
       id: 'baby-teeth-info', label: 'Süt Dişleri Hakkında', emoji: '🍼',
       card: {
         title: 'Bebeğimin Dişleri Ne Zaman Çıkar?',
