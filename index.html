@@ -75,6 +75,13 @@ const COLORS = {
     noteBg: 'bg-teal-50', noteBorder: 'border-l-teal-400', noteText: 'text-teal-900',
     breadcrumb: 'bg-teal-100 text-teal-700', dot: 'bg-teal-400',
   },
+  rose: {
+    buttonBg: 'bg-rose-100', buttonHover: 'hover:bg-rose-200', border: 'border-rose-200',
+    text: 'text-rose-800', subtext: 'text-rose-600', emojiBg: 'bg-rose-200',
+    headerBg: 'bg-gradient-to-r from-rose-100 to-rose-50',
+    noteBg: 'bg-rose-50', noteBorder: 'border-l-rose-400', noteText: 'text-rose-900',
+    breadcrumb: 'bg-rose-100 text-rose-700', dot: 'bg-rose-400',
+  },
 };
 
 /* ─── AGE GROUPS ─── */
@@ -84,6 +91,7 @@ const AGE_GROUPS = [
   { id: '1-3',      label: '1–3 Yaş',   emoji: '🧒', desc: 'Bebeklik dönemi',               colorKey: 'pink'   },
   { id: '3-6',      label: '3–6 Yaş',   emoji: '🧒', desc: 'Okul öncesi dönem',                colorKey: 'sky'    },
   { id: '6-12',     label: '6–12 Yaş',  emoji: '🧑', desc: 'Okul çağı & kalıcı dişler',        colorKey: 'teal'   },
+  { id: 'diseases', label: 'Hastalık & Ağız', emoji: '🤒', desc: 'Çocukluk hastalıklarında ağız bakımı', colorKey: 'rose' },
 ];
 
 /* ─── TOPICS ─── */
@@ -432,6 +440,69 @@ const TOPICS = {
           'Her antrenmanda takın, sonra durulayıp saklayın',
         ],
         note: 'Ağız koruyucu dişleri, dudakları ve çeneyi korur. Maliyeti, tek bir kırık dişin tedavisinin çok altındadır.',
+      },
+    },
+  ],
+
+  diseases: [
+    {
+      id: 'chickenpox', label: 'Suçiçeği', emoji: '🔴',
+      card: {
+        title: 'Suçiçeğinde Ağız Bakımı',
+        summary: 'Suçiçeği döneminde ağız içinde aft benzeri küçük yaralar ve su dolu kabarcıklar oluşabilir. Bu yaralar yutmayı ve beslenmeyi zorlaştırabilir; ancak doğru bakımla süreç çok daha rahat atlatılabilir.',
+        tips: [
+          '🪥 Yumuşak kıllı bir bebek diş fırçası kullanın — sert fırçalama yaraları tahriş eder',
+          '🍋 Portakal suyu, domates, turşu gibi asitli ve tuzlu gıdalardan kaçının — yaralar üzerinde yakıcı etki yapar',
+          '🧊 Soğuk (ama buz gibi değil) yumuşak gıdalar tercih edin: yoğurt, muhallebi, muz püresi',
+          '💧 Bol su içirin; ağrı nedeniyle sıvı reddi varsa komposto veya ıhlamur gibi ılık içecekler deneyin',
+          '🌊 Günde 2–3 kez tuzlu su gargarası (1 bardak ılık suya yarım çay kaşığı tuz) yaralan bölgeyi rahatlatır',
+        ],
+        note: 'Çocuğunuz ağrısından dolayı su içmeyi reddediyorsa bu ciddi bir dehidrasyon işareti olabilir — 6 saatten fazla süre idrara çıkmıyorsa mutlaka doktora başvurun. Suçiçeği dönemindeki ağız yaraları genellikle 5–7 gün içinde kendiliğinden iyileşir.',
+      },
+    },
+    {
+      id: 'hand-foot-mouth', label: 'El-Ayak-Ağız Hastalığı', emoji: '🤲',
+      card: {
+        title: 'El-Ayak-Ağız Hastalığında Ağız Bakımı',
+        summary: 'El-Ayak-Ağız hastalığında dil, yanakların iç yüzeyi ve damakta çok sayıda ağrılı ülser oluşur. Yutma güçlüğü nedeniyle yeterince sıvı alamayan çocuklarda dehidrasyon (sıvı kaybı) riski en önemli endişedir.',
+        tips: [
+          '💧 Çocuğunuz ağrıdan su içmeyi reddedebilir — küçük yudumlarla sık sık sıvı almaya teşvik edin',
+          '🧊 Soğuk, yumuşak gıdalar ağrıyı geçici olarak azaltır: dondurma (şekersiz), soğuk yoğurt, muhallebi',
+          '🍋 Asitli meyve suları, gazlı içecekler ve tuzlu yiyeceklerden kesinlikle kaçının',
+          '🪥 Dişleri fırçalamak çok ağrılıysa ıslak bir gazlı bezle dişleri nazikçe silin',
+          '🌡️ Ateş yüksekse doktorun önerdiği doz ile ağrı kesici verilebilir — bu sıvı alımını kolaylaştırır',
+        ],
+        note: 'Çocuğunuz 6–8 saat boyunca idrara çıkmadıysa, ağlayamıyorsa veya çok halsizse acilen doktora gidin. El-Ayak-Ağız hastalığı genellikle 7–10 günde geçer; ancak bu süreçte sıvı dengesi korunmalıdır.',
+      },
+    },
+    {
+      id: 'hsv-gingivostomatitis', label: 'Uçuk Virüsü (HSV)', emoji: '🦠',
+      card: {
+        title: 'Herpetik Gingivostomatit: İlk HSV Enfeksiyonu',
+        summary: 'Çocuklarda uçuk virüsünün (HSV-1) ilk kez vücuda girişi çoğunlukla "herpetik gingivostomatit" olarak kendini gösterir. Diş etleri şişer, kızarır ve kolayca kanar; ağız içinde çok sayıda ağrılı yara oluşur. Görünümü ürkütücü olsa da uygun bakımla atlatılabilir.',
+        tips: [
+          '🪥 Çok yumuşak kıllı fırça veya parmak fırçası kullanın — diş eti kanaması fırçalamayı bırakmak için değil, daha nazik fırçalamak için bir işarettir',
+          '🍋 Asitli gıdalar (narenciye, domates), baharatlı ve sert yiyeceklerden kaçının',
+          '🧊 Soğuk, yumuşak gıdalar hem besler hem ağrıyı hafifletir',
+          '💊 Doktor tarafından antiviral ilaç (asiklovir) başlandıysa düzenli kullanın — iyileşmeyi hızlandırır',
+          '🧴 Ağzı tuzlu suyla çalkalamak yaraları temiz tutar ve iyileşmeyi destekler',
+        ],
+        note: 'Herpetik gingivostomatit çocuklardaki en ağır ağız içi viral tablo olabilir ve yüksek ateşle birlikte seyredebilir. Belirtiler 10–14 gün sürebilir. Yüksek ateş, yutamama veya şiddetli ağrı durumunda vakit kaybetmeden doktora başvurun.',
+      },
+    },
+    {
+      id: 'mumps', label: 'Kabakulak', emoji: '🏥',
+      card: {
+        title: 'Kabakulakta Tükürük Bezleri ve Ağız Kuruluğu',
+        summary: 'Kabakulak, kulak önündeki ve alt çenedeki tükürük bezlerini şişiren viral bir enfeksiyondur. Tükürük üretimi azaldığında ağız kuruluğu ortaya çıkar ve bu durum çürük riskini ciddi ölçüde artırır.',
+        tips: [
+          '💧 Bol su içirin — günde en az 6–8 bardak; tükürük akışını destekler',
+          '🍬 Şekerli gıda ve içeceklerden uzak durun; tükürüğün azaldığı dönemde çürük riski normalin çok üzerindedir',
+          '🪥 Dişleri düzenli fırçalamayı aksatmayın; tükürük azlığı plağın daha hızlı birikmesine neden olur',
+          '🍋 Asitli gıdalar şiş tükürük bezlerinde ağrıyı artırabilir — bu süreçte kaçının',
+          '🌊 Ağız kuruluğu devam ediyorsa şekersiz sakız çiğnemek veya buz emmek tükürük akışını uyarabilir',
+        ],
+        note: 'Kabakulak geçtikten sonra da ağız kuruluğu birkaç hafta sürebilir. Bu dönemde florürlü macun kullanımına özellikle dikkat edin ve kontrol için pedodontistinize başvurun — tükürüğün azaldığı dönem sonrası diş hasarını erken önlemek mümkündür.',
       },
     },
   ],
