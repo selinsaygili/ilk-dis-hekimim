@@ -342,17 +342,17 @@ const TOPICS = {
       },
     },
     {
-      id: 'dental-injury', label: 'Diş Yaralanmaları', emoji: '🚨',
+      id: 'childhood-diseases', label: 'Çocukluk Hastalıkları', emoji: '🤒',
       card: {
-        title: 'Dişi Kırıldı veya Düştü! Ne Yapmalıyım?',
-        summary: 'Diş yaralanmaları bu yaş grubunda sık görülür. Sakin kalın ve hızlı hareket edin.',
+        title: 'Çocukluk Hastalıkları Dişleri Nasıl Etkiler?',
+        summary: 'Su çiçeği, kızamık, el-ayak-ağız hastalığı gibi çocukluk çağı enfeksiyonları ağız sağlığını doğrudan etkileyebilir. Hastalık döneminde ağız bakımını ihmal etmemek büyük önem taşır.',
         tips: [
-          '🔴 Kalıcı diş düştüyse: kökten tutmayın, sütün içinde saklayın, 30–60 dk içinde diş hekimine gidin',
-          '🟡 Süt dişi düştüyse: geri takmaya çalışmayın, diş hekimini arayın',
-          'Kırık diş parçasını varsa saklayın',
-          'Kanama varsa temiz bez ile hafifçe bastırın',
+          '🌡️ Yüksek ateş: Uzun süren yüksek ateş, gelişmekte olan kalıcı dişlerin mine tabakasında kalıcı iz (mine hipoplazisi) bırakabilir',
+          '💊 Antibiyotik kullanımı: Bazı antibiyotikler (tetrasiklin grubu) diş rengini etkileyebilir; doktorunuza alternatif sorun',
+          '🦠 El-ayak-ağız hastalığı: Ağız içinde ağrılı yaralar oluşturur; yumuşak gıdalar verin, tuzlu su ile çalkalayın',
+          '🍬 Şurup formundaki ilaçlar: Şeker içerir; her kullanımdan sonra dişleri su ile çalkalayın',
         ],
-        note: 'Süt dişi yaralanmaları altındaki kalıcı dişi etkileyebilir. Görünürde sorun olmasa bile yaralanma sonrası pedodontiste mutlaka gidin.',
+        note: 'Ateşli bir hastalık geçirdikten sonra çocuğun dişlerini kontrol ettirmek iyi bir alışkanlıktır. Mine üzerindeki etkiler erken fark edilirse koruyucu önlem alınabilir.',
       },
     },
   ],
@@ -668,8 +668,9 @@ function App() {
         {step === 'topics' && <TopicsView ageId={selectedAge} onSelectTopic={handleSelectTopic} onBack={handleBackToHome} />}
         {step === 'card'   && <InfoCardView ageId={selectedAge} topicId={selectedTopic} onBack={handleBackToTopics} />}
       </main>
-      <footer className="text-center py-6 text-xs text-gray-400 font-medium">
-        © 2025 İlk Diş Hekimim · Uzman Pedodonti Rehberi
+      <footer className="text-center py-8 font-medium space-y-1">
+        <p className="text-sm text-gray-600 font-bold">👩‍⚕️ Diş Hekimi Selin Saygılı</p>
+        <p className="text-xs text-gray-400">© 2025 İlk Diş Hekimim · Uzman Pedodonti Rehberi</p>
       </footer>
     </div>
   );
