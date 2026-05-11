@@ -65,6 +65,13 @@ const COLORS = {
     noteBg: 'bg-sky-50', noteBorder: 'border-l-sky-400', noteText: 'text-sky-900',
     breadcrumb: 'bg-sky-100 text-sky-700', dot: 'bg-sky-400',
   },
+  rose: {
+    buttonBg: 'bg-rose-100', buttonHover: 'hover:bg-rose-200', border: 'border-rose-200',
+    text: 'text-rose-800', subtext: 'text-rose-600', emojiBg: 'bg-rose-200',
+    headerBg: 'bg-gradient-to-r from-rose-100 to-rose-50',
+    noteBg: 'bg-rose-50', noteBorder: 'border-l-rose-400', noteText: 'text-rose-900',
+    breadcrumb: 'bg-rose-100 text-rose-700', dot: 'bg-rose-400',
+  },
   teal: {
     buttonBg: 'bg-teal-100', buttonHover: 'hover:bg-teal-200', border: 'border-teal-200',
     text: 'text-teal-800', subtext: 'text-teal-600', emojiBg: 'bg-teal-200',
@@ -81,6 +88,7 @@ const AGE_GROUPS = [
   { id: '1-3',      label: '1–3 Yaş',   emoji: '🧒', desc: 'Bebeklik dönemi',               colorKey: 'pink'   },
   { id: '3-6',      label: '3–6 Yaş',   emoji: '🧒', desc: 'Okul öncesi dönem',                colorKey: 'sky'    },
   { id: '6-12',     label: '6–12 Yaş',  emoji: '🧑', desc: 'Okul çağı & kalıcı dişler',        colorKey: 'teal'   },
+  { id: 'diseases',  label: 'Çocukluk Hastalıkları', emoji: '🤒', desc: 'Hastalık döneminde ağız bakımı',  colorKey: 'rose'   },
 ];
 
 /* ─── TOPICS ─── */
@@ -412,6 +420,68 @@ const TOPICS = {
           'Her antrenmanda takın, sonra durulayıp saklayın',
         ],
         note: 'Ağız koruyucu dişleri, dudakları ve çeneyi korur. Maliyeti, tek bir kırık dişin tedavisinin çok altındadır.',
+      },
+    },
+  ],
+  diseases: [
+    {
+      id: 'chickenpox', label: 'Suçiçeği', emoji: '🔴',
+      card: {
+        title: 'Suçiçeğinde Ağız Bakımı',
+        summary: 'Suçiçeği döneminde ağız içinde aft benzeri küçük yaralar ve kabarcıklar oluşabilir. Yutmayı ve beslenmeyi zorlaştırabilir ama doğru bakımla süreç çok daha rahat atlatılır.',
+        tips: [
+          '🪥 Yumuşak kıllı bir bebek diş fırçası kullanın — sert fırçalama yaraları tahriş eder',
+          '🍋 Portakal suyu, domates, turşu gibi asitli ve tuzlu gıdalardan kaçının',
+          '🧊 Soğuk, yumuşak gıdalar tercih edin: yoğurt, muhallebi, muz püresi',
+          '💧 Bol su içirin; ağrıdan sıvı reddi varsa ılık komposto veya ıhlamur deneyin',
+          '🌊 Günde 2–3 kez tuzlu su gargarası (1 bardak ılık suya yarım çay kaşığı tuz) ağrıyı hafifletir',
+        ],
+        note: 'Çocuğunuz ağrısından dolayı su içmeyi reddediyorsa bu ciddi bir dehidrasyon işareti. 6 saatten fazla idrara çıkmıyorsa mutlaka doktora gidin. Ağız yaraları genellikle 5–7 günde kendiliğinden geçer.',
+      },
+    },
+    {
+      id: 'hand-foot-mouth', label: 'El-Ayak-Ağız', emoji: '🤲',
+      card: {
+        title: 'El-Ayak-Ağız Hastalığında Ağız Bakımı',
+        summary: 'Bu hastalıkta dil, yanakların iç yüzeyi ve damakta çok sayıda ağrılı ülser çıkar. En büyük risk, ağrıdan sıvı alamayan çocuklarda dehidrasyon.',
+        tips: [
+          '💧 Ağrıdan su içmeyi reddedebilir — küçük yudumlarla sık sık sıvı almaya teşvik edin',
+          '🧊 Soğuk, yumuşak gıdalar ağrıyı geçici azaltır: soğuk yoğurt, muhallebi, dondurma (şekersiz)',
+          '🍋 Asitli meyve suları, gazlı içecekler ve tuzlu yiyeceklerden kaçının',
+          '🪥 Fırçalamak çok ağrılıysa ıslak bir gazlı bezle dişleri nazikçe silin',
+          '🌡️ Ateş yüksekse doktorun önerdiği dozda ağrı kesici verilebilir',
+        ],
+        note: '6–8 saat boyunca idrara çıkmadıysa, ağlayamıyorsa veya çok halsizse acilen doktora gidin. Hastalık genellikle 7–10 günde geçer ama bu süreçte sıvı dengesi korunmalı.',
+      },
+    },
+    {
+      id: 'hsv-gingivostomatitis', label: 'Uçuk Virüsü (HSV)', emoji: '🦠',
+      card: {
+        title: 'İlk HSV Enfeksiyonu: Ağız Bakımı',
+        summary: 'Uçuk virüsünün (HSV-1) çocuklardaki ilk enfeksiyonu genellikle ağız içinde başlar. Diş etleri şişer, kızarır, çok sayıda ağrılı yara oluşur. Ürkütücü görünse de uygun bakımla atlatılır.',
+        tips: [
+          '🪥 Çok yumuşak kıllı fırça ya da parmak fırçası kullanın',
+          '🍋 Narenciye, domates, baharatlı ve sert gıdalardan kaçının',
+          '🧊 Soğuk, yumuşak gıdalar hem besler hem ağrıyı hafifletir',
+          '💊 Doktor antiviral ilaç (asiklovir) başladıysa düzenli kullanın',
+          '🧴 Tuzlu suyla çalkalamak yaraları temiz tutar ve iyileşmeyi destekler',
+        ],
+        note: 'Çocuklardaki en ağır ağız içi viral tablolardan biri, yüksek ateşle 10–14 gün sürebilir. Yüksek ateş, yutamama veya şiddetli ağrı varsa vakit kaybetmeden doktora gidin.',
+      },
+    },
+    {
+      id: 'mumps', label: 'Kabakulak', emoji: '🏥',
+      card: {
+        title: 'Kabakulakta Ağız Kuruluğu ve Diş Sağlığı',
+        summary: 'Kabakulak tükürük bezlerini şişirir. Tükürük azaldığında ağız kurur ve çürük riski ciddi biçimde artar.',
+        tips: [
+          '💧 Günde en az 6–8 bardak su içirin; tükürük akışını destekler',
+          '🍬 Şekerli gıda ve içeceklerden uzak durun; tükürüğün azaldığı dönemde çürük riski çok yüksek',
+          '🪥 Düzenli fırçalamayı aksatmayın; tükürük azlığı plağın daha hızlı birikmesine neden olur',
+          '🍋 Asitli gıdalar şiş tükürük bezlerinde ağrıyı artırabilir',
+          '🌊 Şekersiz sakız çiğnemek veya buz emmek tükürük akışını uyarabilir',
+        ],
+        note: 'Kabakulak geçtikten sonra da ağız kuruluğu birkaç hafta sürebilir. Florürlü macun kullanımına özellikle dikkat edin ve kontrol için pedodontistinize başvurun.',
       },
     },
   ],
