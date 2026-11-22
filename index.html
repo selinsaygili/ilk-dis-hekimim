@@ -527,7 +527,7 @@ function Header({ step, selectedAge, onReset, onBackToTopics }) {
 }
 
 /* ─── HOME VIEW ─── */
-function HomeView({ onSelectAge }) {
+function HomeView({ onSelectAge, onAbout }) {
   return (
     <div className="pt-10 pb-8 fade-in">
       <div className="text-center mb-10">
@@ -560,7 +560,20 @@ function HomeView({ onSelectAge }) {
         })}
       </div>
 
-      <p className="text-center text-xs text-slate-400 mt-10">
+      <button
+        onClick={onAbout}
+        className="accent-btn mt-3 w-full card-hover text-left p-5 rounded-xl border border-slate-200 bg-white transition-all duration-150 focus:outline-none"
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <div className="text-base font-bold text-slate-800">Bu Siteyi Kim Hazırladı?</div>
+            <div className="text-sm text-slate-500 mt-0.5">Dt. Selin Saygılı hakkında</div>
+          </div>
+          <span className="text-slate-400 text-lg">›</span>
+        </div>
+      </button>
+
+      <p className="text-center text-xs text-slate-400 mt-6">
         Bu rehber bilgilendirme amaçlıdır. Tanı ve tedavi için diş hekiminize başvurunuz.
       </p>
     </div>
@@ -681,6 +694,71 @@ function InfoCardView({ ageId, topicId, onBack }) {
   );
 }
 
+/* ─── ABOUT VIEW ─── */
+function AboutView({ onBack }) {
+  return (
+    <div className="pt-8 pb-8 fade-in">
+      <div className="mb-8 pb-4 border-b-2" style={{borderBottomColor: 'var(--accent)'}}>
+        <h2 className="text-2xl font-bold text-slate-800">Hakkımda</h2>
+        <p className="text-slate-500 text-sm mt-1">Dt. Selin Saygılı</p>
+      </div>
+
+      <div className="space-y-6">
+        <div>
+          <p className="text-slate-700 leading-relaxed">
+            İstanbul Üniversitesi Diş Hekimliği Fakültesi Pedodonti Anabilim Dalı'nda doktora öğrencisiyim.
+            Çalışmalarım çocuklarda diş ve mine gelişim bozuklukları üzerine yoğunlaşmaktadır;
+            özellikle <strong>Molar İnsizör Hipomineralizasyon (MIH)</strong> alanında araştırmalar yürütmekteyim.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold text-slate-800 mb-3">Çalışma Alanlarım</h3>
+          <ul className="space-y-2">
+            {[
+              'Çocuklarda diş ve mine gelişim bozuklukları',
+              'Molar İnsizör Hipomineralizasyon (MIH)',
+              'Çocuk hastalarda koruyucu diş hekimliği uygulamaları',
+              'Pedodontide erken tanı ve klinik yönetim',
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0 inline-block" style={{backgroundColor: 'var(--accent)'}} />
+                <span className="text-slate-600 text-sm">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold text-slate-800 mb-3">Bilimsel Katkılarım</h3>
+          <p className="text-slate-700 leading-relaxed text-sm mb-4">
+            Yurt içi ve uluslararası hakemli dergilerde yayınlarım bulunmaktadır.
+            Araştırmalarım TÜBİTAK tarafından desteklenmektedir.
+          </p>
+          <div className="border-l-4 p-4 rounded-r-xl" style={{borderLeftColor: 'var(--accent)', backgroundColor: 'var(--accent-light)'}}>
+            <div className="font-semibold text-xs uppercase tracking-wide mb-2" style={{color: 'var(--accent)'}}>TÜBİTAK Destekleri</div>
+            <ul className="space-y-1">
+              {['2211-A Yurt İçi Doktora Burs Programı', '2224-A Yurt Dışı Bilimsel Etkinliklere Katılım Desteği', '2224-B Yurt İçi Bilimsel Etkinliklere Katılım Desteği'].map((s, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 inline-block" style={{backgroundColor: 'var(--accent)'}} />
+                  <span className="text-slate-600 text-sm">{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button
+        onClick={onBack}
+        className="mt-6 w-full py-3 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors"
+      >
+        ← Ana Sayfaya Dön
+      </button>
+    </div>
+  );
+}
+
 /* ─── APP ─── */
 function App() {
   const [step, setStep] = useState('home');
@@ -713,6 +791,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleAbout = () => {
+    setStep('about');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header
@@ -722,9 +805,10 @@ function App() {
         onBackToTopics={handleBackToTopics}
       />
       <main className="max-w-2xl mx-auto px-4 w-full flex-1">
-        {step === 'home'   && <HomeView onSelectAge={handleSelectAge} />}
+        {step === 'home'   && <HomeView onSelectAge={handleSelectAge} onAbout={handleAbout} />}
         {step === 'topics' && <TopicsView ageId={selectedAge} onSelectTopic={handleSelectTopic} onBack={handleBackToHome} />}
         {step === 'card'   && <InfoCardView ageId={selectedAge} topicId={selectedTopic} onBack={handleBackToTopics} />}
+        {step === 'about'  && <AboutView onBack={handleBackToHome} />}
       </main>
       <footer className="text-center py-8 font-medium space-y-1">
         <p className="text-sm text-slate-600">Dt. Selin Saygılı</p>
