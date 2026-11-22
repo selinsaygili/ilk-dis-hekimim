@@ -696,6 +696,21 @@ function InfoCardView({ ageId, topicId, onBack }) {
 
 /* ─── ABOUT VIEW ─── */
 function AboutView({ onBack }) {
+  const publications = [
+    { year: '2026', text: 'Factors Associated With Parental Oral Health Literacy in a Clinical Sample of Turkish Preschool Children. International Journal of Paediatric Dentistry.' },
+    { year: '2026', text: 'Structural quality, readability, and educational usability of large language model chatbot responses to parental questions on teething. BMC Oral Health.' },
+    { year: '2025', text: 'Dental and Craniofacial Findings in Early Childhood in Oral–Facial–Digital Syndrome Type 1: A Case Report. Case Reports in Dentistry.' },
+    { year: '2025', text: 'Dental age estimation in children and adolescents with amelogenesis imperfecta. BMC Oral Health.' },
+    { year: '2025', text: 'Randomized controlled trials in dentistry. Essential Dentistry.' },
+    { year: '2025', text: 'Quality and Reliability of YouTube Video Contents About Sports Mouthguards. Dental Traumatology.' },
+    { year: '2024', text: 'Evaluation of the Reliability and Accuracy of YouTube™ and TikTok™ Contents About Storage Media for Avulsed Teeth. Dental Traumatology.' },
+    { year: '2024', text: 'Noonan Syndrome: Due To 3 Case Reports. International Dental Journal.' },
+    { year: '2024', text: 'Solitary Median Maxillary Central Incisor Syndrome (SMMCI). International Dental Journal.' },
+    { year: '2024', text: 'Artificial Intelligence Applications in Pedodontics. Medical Informatics IV. Istanbul University Press. (Kitap Bölümü)' },
+    { year: '2023', text: "Dentists' Approaches to Children and Current Basic Behavior Management Guideline. Çocuk Dergisi." },
+    { year: '2023', text: 'Diş Hekimliğinde Sistematik Derlemelerin Önemi. 7tepe Klinik Dergisi.' },
+  ];
+
   return (
     <div className="pt-8 pb-8 fade-in">
       <div className="mb-8 pb-4 border-b-2" style={{borderBottomColor: 'var(--accent)'}}>
@@ -703,48 +718,44 @@ function AboutView({ onBack }) {
         <p className="text-slate-500 text-sm mt-1">Dt. Selin Saygılı</p>
       </div>
 
-      <div className="space-y-6">
-        <div>
-          <p className="text-slate-700 leading-relaxed">
-            İstanbul Üniversitesi Diş Hekimliği Fakültesi Pedodonti Anabilim Dalı'nda doktora öğrencisiyim.
-            Çalışmalarım çocuklarda diş ve mine gelişim bozuklukları üzerine yoğunlaşmaktadır;
-            özellikle <strong>Molar İnsizör Hipomineralizasyon (MIH)</strong> alanında araştırmalar yürütmekteyim.
-          </p>
-        </div>
+      <div className="space-y-8">
+        <p className="text-slate-700 leading-relaxed">
+          İstanbul Üniversitesi Diş Hekimliği Fakültesi Pedodonti Anabilim Dalı'nda doktora öğrencisiyim.
+          Çalışmalarım çocuk hastalarda ağız-diş sağlığı, mine gelişim bozuklukları ve koruyucu pedodonti uygulamaları üzerine yoğunlaşmaktadır.
+        </p>
 
         <div>
-          <h3 className="text-lg font-bold text-slate-800 mb-3">Çalışma Alanlarım</h3>
-          <ul className="space-y-2">
-            {[
-              'Çocuklarda diş ve mine gelişim bozuklukları',
-              'Molar İnsizör Hipomineralizasyon (MIH)',
-              'Çocuk hastalarda koruyucu diş hekimliği uygulamaları',
-              'Pedodontide erken tanı ve klinik yönetim',
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0 inline-block" style={{backgroundColor: 'var(--accent)'}} />
-                <span className="text-slate-600 text-sm">{item}</span>
+          <h3 className="text-lg font-bold text-slate-800 mb-4">Yayınlar</h3>
+          <div className="space-y-3">
+            {publications.map((pub, i) => (
+              <div key={i} className="flex gap-3 items-start">
+                <span className="text-xs font-semibold mt-0.5 flex-shrink-0 w-8" style={{color: 'var(--accent)'}}>{pub.year}</span>
+                <p className="text-slate-600 text-sm leading-relaxed">{pub.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="border-l-4 p-4 rounded-r-xl" style={{borderLeftColor: 'var(--accent)', backgroundColor: 'var(--accent-light)'}}>
+          <div className="font-semibold text-xs uppercase tracking-wide mb-2" style={{color: 'var(--accent)'}}>TÜBİTAK Destekleri</div>
+          <ul className="space-y-1">
+            {['2211-A Yurt İçi Doktora Burs Programı', '2224-A Yurt Dışı Bilimsel Etkinliklere Katılım Desteği (3 kez)', '2224-B Yurt İçi Bilimsel Etkinliklere Katılım Desteği'].map((s, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 inline-block" style={{backgroundColor: 'var(--accent)'}} />
+                <span className="text-slate-600 text-sm">{s}</span>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-slate-800 mb-3">Bilimsel Katkılarım</h3>
-          <p className="text-slate-700 leading-relaxed text-sm mb-4">
-            Yurt içi ve uluslararası hakemli dergilerde yayınlarım bulunmaktadır.
-            Araştırmalarım TÜBİTAK tarafından desteklenmektedir.
-          </p>
-          <div className="border-l-4 p-4 rounded-r-xl" style={{borderLeftColor: 'var(--accent)', backgroundColor: 'var(--accent-light)'}}>
-            <div className="font-semibold text-xs uppercase tracking-wide mb-2" style={{color: 'var(--accent)'}}>TÜBİTAK Destekleri</div>
-            <ul className="space-y-1">
-              {['2211-A Yurt İçi Doktora Burs Programı', '2224-A Yurt Dışı Bilimsel Etkinliklere Katılım Desteği', '2224-B Yurt İçi Bilimsel Etkinliklere Katılım Desteği'].map((s, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 inline-block" style={{backgroundColor: 'var(--accent)'}} />
-                  <span className="text-slate-600 text-sm">{s}</span>
-                </li>
-              ))}
-            </ul>
+          <h3 className="text-lg font-bold text-slate-800 mb-3">Gönüllü Faaliyetler</h3>
+          <div className="border border-slate-200 rounded-xl p-4">
+            <div className="font-semibold text-slate-800 text-sm">"Çocuklar Güzel Gülsün Diye #Hatay'dayız"</div>
+            <div className="text-xs text-slate-400 mt-0.5 mb-2">İstanbul Üniversitesi Diş Hekimliği Fakültesi · 2024–devam ediyor</div>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Hatay'daki okullarda çocuklara ücretsiz ağız-diş sağlığı muayenesi, koruyucu uygulamalar ve sağlık eğitimi sunmayı amaçlayan sosyal sorumluluk projesi. 2024'te başlatılmış olup üçüncü yılına girilmiştir.
+            </p>
           </div>
         </div>
       </div>
