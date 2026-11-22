@@ -38,46 +38,46 @@ const { useState } = React;
 /* ─── COLORS ─── */
 const COLORS = {
   purple: {
-    buttonBg: 'bg-purple-100', buttonHover: 'hover:bg-purple-200', border: 'border-purple-200',
-    text: 'text-purple-800', subtext: 'text-purple-600', emojiBg: 'bg-purple-200',
-    headerBg: 'bg-gradient-to-r from-purple-100 to-purple-50',
-    noteBg: 'bg-purple-50', noteBorder: 'border-l-purple-400', noteText: 'text-purple-900',
-    breadcrumb: 'bg-purple-100 text-purple-700', dot: 'bg-purple-400',
+    buttonBg: 'bg-white', buttonHover: 'hover:bg-slate-50', border: 'border-slate-200',
+    text: 'text-slate-800', subtext: 'text-slate-500', emojiBg: 'bg-slate-100',
+    headerBg: 'bg-slate-50',
+    noteBg: 'bg-blue-50', noteBorder: 'border-l-blue-400', noteText: 'text-slate-800',
+    breadcrumb: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400',
   },
   amber: {
-    buttonBg: 'bg-amber-100', buttonHover: 'hover:bg-amber-200', border: 'border-amber-200',
-    text: 'text-amber-800', subtext: 'text-amber-600', emojiBg: 'bg-amber-200',
-    headerBg: 'bg-gradient-to-r from-amber-100 to-amber-50',
-    noteBg: 'bg-amber-50', noteBorder: 'border-l-amber-400', noteText: 'text-amber-900',
-    breadcrumb: 'bg-amber-100 text-amber-700', dot: 'bg-amber-400',
+    buttonBg: 'bg-white', buttonHover: 'hover:bg-slate-50', border: 'border-slate-200',
+    text: 'text-slate-800', subtext: 'text-slate-500', emojiBg: 'bg-slate-100',
+    headerBg: 'bg-slate-50',
+    noteBg: 'bg-blue-50', noteBorder: 'border-l-blue-400', noteText: 'text-slate-800',
+    breadcrumb: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400',
   },
   pink: {
-    buttonBg: 'bg-pink-100', buttonHover: 'hover:bg-pink-200', border: 'border-pink-200',
-    text: 'text-pink-800', subtext: 'text-pink-600', emojiBg: 'bg-pink-200',
-    headerBg: 'bg-gradient-to-r from-pink-100 to-pink-50',
-    noteBg: 'bg-pink-50', noteBorder: 'border-l-pink-400', noteText: 'text-pink-900',
-    breadcrumb: 'bg-pink-100 text-pink-700', dot: 'bg-pink-400',
+    buttonBg: 'bg-white', buttonHover: 'hover:bg-slate-50', border: 'border-slate-200',
+    text: 'text-slate-800', subtext: 'text-slate-500', emojiBg: 'bg-slate-100',
+    headerBg: 'bg-slate-50',
+    noteBg: 'bg-blue-50', noteBorder: 'border-l-blue-400', noteText: 'text-slate-800',
+    breadcrumb: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400',
   },
   sky: {
-    buttonBg: 'bg-sky-100', buttonHover: 'hover:bg-sky-200', border: 'border-sky-200',
-    text: 'text-sky-800', subtext: 'text-sky-600', emojiBg: 'bg-sky-200',
-    headerBg: 'bg-gradient-to-r from-sky-100 to-sky-50',
-    noteBg: 'bg-sky-50', noteBorder: 'border-l-sky-400', noteText: 'text-sky-900',
-    breadcrumb: 'bg-sky-100 text-sky-700', dot: 'bg-sky-400',
+    buttonBg: 'bg-white', buttonHover: 'hover:bg-slate-50', border: 'border-slate-200',
+    text: 'text-slate-800', subtext: 'text-slate-500', emojiBg: 'bg-slate-100',
+    headerBg: 'bg-slate-50',
+    noteBg: 'bg-blue-50', noteBorder: 'border-l-blue-400', noteText: 'text-slate-800',
+    breadcrumb: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400',
   },
   rose: {
-    buttonBg: 'bg-rose-100', buttonHover: 'hover:bg-rose-200', border: 'border-rose-200',
-    text: 'text-rose-800', subtext: 'text-rose-600', emojiBg: 'bg-rose-200',
-    headerBg: 'bg-gradient-to-r from-rose-100 to-rose-50',
-    noteBg: 'bg-rose-50', noteBorder: 'border-l-rose-400', noteText: 'text-rose-900',
-    breadcrumb: 'bg-rose-100 text-rose-700', dot: 'bg-rose-400',
+    buttonBg: 'bg-white', buttonHover: 'hover:bg-slate-50', border: 'border-slate-200',
+    text: 'text-slate-800', subtext: 'text-slate-500', emojiBg: 'bg-slate-100',
+    headerBg: 'bg-slate-50',
+    noteBg: 'bg-blue-50', noteBorder: 'border-l-blue-400', noteText: 'text-slate-800',
+    breadcrumb: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400',
   },
   teal: {
-    buttonBg: 'bg-teal-100', buttonHover: 'hover:bg-teal-200', border: 'border-teal-200',
-    text: 'text-teal-800', subtext: 'text-teal-600', emojiBg: 'bg-teal-200',
-    headerBg: 'bg-gradient-to-r from-teal-100 to-teal-50',
-    noteBg: 'bg-teal-50', noteBorder: 'border-l-teal-400', noteText: 'text-teal-900',
-    breadcrumb: 'bg-teal-100 text-teal-700', dot: 'bg-teal-400',
+    buttonBg: 'bg-white', buttonHover: 'hover:bg-slate-50', border: 'border-slate-200',
+    text: 'text-slate-800', subtext: 'text-slate-500', emojiBg: 'bg-slate-100',
+    headerBg: 'bg-slate-50',
+    noteBg: 'bg-blue-50', noteBorder: 'border-l-blue-400', noteText: 'text-slate-800',
+    breadcrumb: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400',
   },
 };
 
@@ -163,11 +163,11 @@ const TOPICS = {
         title: 'Hamilelik Ağız Sağlığını Nasıl Etkiler?',
         summary: 'Hamilelikte ağız sağlığının kötüleşmesi çok yaygın, genellikle de beklenmedik bir şey. Neden olduğunu bilirsek önlemek de kolaylaşır.',
         tips: [
-          '😴 Yorgunluk: Gebelik yorgunluğu akşam fırçalamayı ya da diş ipini atlatmanıza yol açabilir; bu da zamanla plak birikimine ve çürüğe zemin hazırlar',
-          '🩸 Hormonal değişimler: Diş etleri şişip kanar; buna gebelik gingivitisi denir. Geçmezse kemik kaybına dönüşebilir',
-          '🤢 Sabah bulantısı: Mide asidi ağza ulaştığında mine tabakasını aşındırır, çürük riski artar',
-          '🍎 Sık atıştırma: Dişler sürekli asitle temas eder, asit seven bakteriler hızla çoğalır',
-          '💊 Sakızlı vitaminler: Dişe yapışır ve çoğu şeker içerir. Tablet ya da kapsül formunu tercih edin, yatmadan önce hiç almayın',
+          'Yorgunluk: Gebelik yorgunluğu akşam fırçalamayı ya da diş ipini atlatmanıza yol açabilir; bu da zamanla plak birikimine ve çürüğe zemin hazırlar',
+          'Hormonal değişimler: Diş etleri şişip kanar; buna gebelik gingivitisi denir. Geçmezse kemik kaybına dönüşebilir',
+          'Sabah bulantısı: Mide asidi ağza ulaştığında mine tabakasını aşındırır, çürük riski artar',
+          'Sık atıştırma: Dişler sürekli asitle temas eder, asit seven bakteriler hızla çoğalır',
+          'Sakızlı vitaminler: Dişe yapışır ve çoğu şeker içerir. Tablet ya da kapsül formunu tercih edin, yatmadan önce hiç almayın',
         ],
         note: 'Tedavi edilmemiş diş eti hastalığının erken doğum ve düşük doğum ağırlığıyla bağlantılı olduğunu gösteren araştırmalar var. Diş hekimi randevusunu ertelemeyin.',
       },
@@ -178,10 +178,10 @@ const TOPICS = {
         title: 'Ağız Sağlığınız Bebeğinizi de Etkiler',
         summary: 'Ağız sağlığı sadece kendinizi değil, bebeğinizi de ilgilendiriyor. Ağzınızdaki bakteri dengesi hem hamilelik sürecini hem de doğum sonrasını etkileyebilir.',
         tips: [
-          '🦠 Diş etinden kana geçen bakteriler rahime ulaşarak erken doğuma yol açabilir',
-          '👶 Dikey geçiş: Doğumdan sonra ağız bakterileriniz bebeğinize aktarılabilir',
-          '🍬 Annedeki asit seven bakteri yoğunluğu yüksekse bebek de bu bakterilerle hayata başlar ve ilerleyen dönemde erken diş çürüğü riski artar',
-          '🪥 Gebelikte florürlü macunla günde en az 2 kez fırçalamak bebeğin doğum sonrası diş enfeksiyonu riskini de azaltır',
+          'Diş etinden kana geçen bakteriler rahime ulaşarak erken doğuma yol açabilir',
+          'Dikey geçiş: Doğumdan sonra ağız bakterileriniz bebeğinize aktarılabilir',
+          'Annedeki asit seven bakteri yoğunluğu yüksekse bebek de bu bakterilerle hayata başlar ve ilerleyen dönemde erken diş çürüğü riski artar',
+          'Gebelikte florürlü macunla günde en az 2 kez fırçalamak bebeğin doğum sonrası diş enfeksiyonu riskini de azaltır',
         ],
         note: 'Hamilelikte dişlerinizi fırçaladığınızda aslında iki kişi için fırçalıyorsunuz. İyi bir ağız bakımı hem sizi hem de bebeğinizi korur.',
       },
@@ -355,8 +355,8 @@ const TOPICS = {
         title: 'Dişi Kırıldı veya Düştü! Ne Yapmalıyım?',
         summary: 'Diş yaralanmaları bu yaş grubunda sık görülür. Sakin kalın ve hızlı hareket edin.',
         tips: [
-          '🔴 Kalıcı diş düştüyse: kökten tutmayın, sütün içinde saklayın, 30–60 dk içinde diş hekimine gidin',
-          '🟡 Süt dişi düştüyse: geri takmaya çalışmayın, diş hekimini arayın',
+          'Kalıcı diş düştüyse: kökten tutmayın, sütün içinde saklayın, 30–60 dk içinde diş hekimine gidin',
+          'Süt dişi düştüyse: geri takmaya çalışmayın, diş hekimini arayın',
           'Kırık diş parçasını varsa saklayın',
           'Kanama varsa temiz bez ile hafifçe bastırın',
         ],
@@ -430,11 +430,11 @@ const TOPICS = {
         title: 'Suçiçeğinde Ağız Bakımı',
         summary: 'Suçiçeği döneminde ağız içinde aft benzeri küçük yaralar ve kabarcıklar oluşabilir. Yutmayı ve beslenmeyi zorlaştırabilir ama doğru bakımla süreç çok daha rahat atlatılır.',
         tips: [
-          '🪥 Yumuşak kıllı bir bebek diş fırçası kullanın; sert fırçalama yaraları tahriş eder',
-          '🍋 Portakal suyu, domates, turşu gibi asitli ve tuzlu gıdalardan kaçının',
-          '🧊 Soğuk, yumuşak gıdalar tercih edin: yoğurt, muhallebi, muz püresi',
-          '💧 Bol su içirin; ağrıdan sıvı reddi varsa ılık komposto veya ıhlamur deneyin',
-          '🌊 Günde 2–3 kez tuzlu su gargarası (1 bardak ılık suya yarım çay kaşığı tuz) ağrıyı hafifletir',
+          'Yumuşak kıllı bir bebek diş fırçası kullanın; sert fırçalama yaraları tahriş eder',
+          'Portakal suyu, domates, turşu gibi asitli ve tuzlu gıdalardan kaçının',
+          'Soğuk, yumuşak gıdalar tercih edin: yoğurt, muhallebi, muz püresi',
+          'Bol su içirin; ağrıdan sıvı reddi varsa ılık komposto veya ıhlamur deneyin',
+          'Günde 2–3 kez tuzlu su gargarası (1 bardak ılık suya yarım çay kaşığı tuz) ağrıyı hafifletir',
         ],
         note: 'Çocuğunuz ağrısından dolayı su içmeyi reddediyorsa bu ciddi bir dehidrasyon işareti. 6 saatten fazla idrara çıkmıyorsa mutlaka doktora gidin. Ağız yaraları genellikle 5–7 günde kendiliğinden geçer.',
       },
@@ -445,11 +445,11 @@ const TOPICS = {
         title: 'El-Ayak-Ağız Hastalığında Ağız Bakımı',
         summary: 'Bu hastalıkta dil, yanakların iç yüzeyi ve damakta çok sayıda ağrılı ülser çıkar. En büyük risk, ağrıdan sıvı alamayan çocuklarda dehidrasyon.',
         tips: [
-          '💧 Ağrıdan su içmeyi reddedebilir; küçük yudumlarla sık sık sıvı almaya teşvik edin',
-          '🧊 Soğuk, yumuşak gıdalar ağrıyı geçici azaltır: soğuk yoğurt, muhallebi, dondurma (şekersiz)',
-          '🍋 Asitli meyve suları, gazlı içecekler ve tuzlu yiyeceklerden kaçının',
-          '🪥 Fırçalamak çok ağrılıysa ıslak bir gazlı bezle dişleri nazikçe silin',
-          '🌡️ Ateş yüksekse doktorun önerdiği dozda ağrı kesici verilebilir',
+          'Ağrıdan su içmeyi reddedebilir; küçük yudumlarla sık sık sıvı almaya teşvik edin',
+          'Soğuk, yumuşak gıdalar ağrıyı geçici azaltır: soğuk yoğurt, muhallebi, dondurma (şekersiz)',
+          'Asitli meyve suları, gazlı içecekler ve tuzlu yiyeceklerden kaçının',
+          'Fırçalamak çok ağrılıysa ıslak bir gazlı bezle dişleri nazikçe silin',
+          'Ateş yüksekse doktorun önerdiği dozda ağrı kesici verilebilir',
         ],
         note: '6–8 saat boyunca idrara çıkmadıysa, ağlayamıyorsa veya çok halsizse acilen doktora gidin. Hastalık genellikle 7–10 günde geçer ama bu süreçte sıvı dengesi korunmalı.',
       },
@@ -460,11 +460,11 @@ const TOPICS = {
         title: 'İlk HSV Enfeksiyonu: Ağız Bakımı',
         summary: 'Uçuk virüsünün (HSV-1) çocuklardaki ilk enfeksiyonu genellikle ağız içinde başlar. Diş etleri şişer, kızarır, çok sayıda ağrılı yara oluşur. Ürkütücü görünse de uygun bakımla atlatılır.',
         tips: [
-          '🪥 Çok yumuşak kıllı fırça ya da parmak fırçası kullanın',
-          '🍋 Narenciye, domates, baharatlı ve sert gıdalardan kaçının',
-          '🧊 Soğuk, yumuşak gıdalar hem besler hem ağrıyı hafifletir',
-          '💊 Doktor antiviral ilaç (asiklovir) başladıysa düzenli kullanın',
-          '🧴 Tuzlu suyla çalkalamak yaraları temiz tutar ve iyileşmeyi destekler',
+          'Çok yumuşak kıllı fırça ya da parmak fırçası kullanın',
+          'Narenciye, domates, baharatlı ve sert gıdalardan kaçının',
+          'Soğuk, yumuşak gıdalar hem besler hem ağrıyı hafifletir',
+          'Doktor antiviral ilaç (asiklovir) başladıysa düzenli kullanın',
+          'Tuzlu suyla çalkalamak yaraları temiz tutar ve iyileşmeyi destekler',
         ],
         note: 'Çocuklardaki en ağır ağız içi viral tablolardan biri, yüksek ateşle 10–14 gün sürebilir. Yüksek ateş, yutamama veya şiddetli ağrı varsa vakit kaybetmeden doktora gidin.',
       },
@@ -475,11 +475,11 @@ const TOPICS = {
         title: 'Kabakulakta Ağız Kuruluğu ve Diş Sağlığı',
         summary: 'Kabakulak tükürük bezlerini şişirir. Tükürük azaldığında ağız kurur ve çürük riski ciddi biçimde artar.',
         tips: [
-          '💧 Günde en az 6–8 bardak su içirin; tükürük akışını destekler',
-          '🍬 Şekerli gıda ve içeceklerden uzak durun; tükürüğün azaldığı dönemde çürük riski çok yüksek',
-          '🪥 Düzenli fırçalamayı aksatmayın; tükürük azlığı plağın daha hızlı birikmesine neden olur',
-          '🍋 Asitli gıdalar şiş tükürük bezlerinde ağrıyı artırabilir',
-          '🌊 Şekersiz sakız çiğnemek veya buz emmek tükürük akışını uyarabilir',
+          'Günde en az 6–8 bardak su içirin; tükürük akışını destekler',
+          'Şekerli gıda ve içeceklerden uzak durun; tükürüğün azaldığı dönemde çürük riski çok yüksek',
+          'Düzenli fırçalamayı aksatmayın; tükürük azlığı plağın daha hızlı birikmesine neden olur',
+          'Asitli gıdalar şiş tükürük bezlerinde ağrıyı artırabilir',
+          'Şekersiz sakız çiğnemek veya buz emmek tükürük akışını uyarabilir',
         ],
         note: 'Kabakulak geçtikten sonra da ağız kuruluğu birkaç hafta sürebilir. Florürlü macun kullanımına özellikle dikkat edin ve kontrol için pedodontistinize başvurun.',
       },
@@ -497,10 +497,10 @@ function Header({ step, selectedAge, onReset, onBackToTopics }) {
         <div className="flex items-center gap-2 cursor-pointer group" onClick={onReset}>
           <span className="text-3xl">🦷</span>
           <div>
-            <div className="text-lg font-black text-gray-800 leading-tight group-hover:text-sky-600 transition-colors">
+            <div className="text-lg font-black text-slate-800 leading-tight group-hover:text-blue-700 transition-colors">
               İlk Diş Hekimim
             </div>
-            <div className="text-xs text-gray-400 font-medium">Çocuk Diş Sağlığı Rehberi</div>
+            <div className="text-xs text-slate-400">Çocuk Diş Sağlığı Rehberi</div>
           </div>
         </div>
         {step !== 'home' && ageGroup && (
@@ -527,13 +527,11 @@ function HomeView({ onSelectAge }) {
   return (
     <div className="pt-10 pb-8 fade-in">
       <div className="text-center mb-10">
-        <div className="text-6xl mb-4">🦷</div>
-        <h2 className="text-3xl sm:text-4xl font-black text-gray-800 mb-3 leading-tight">
-          Çocuğunuz<br />
-          <span className="text-sky-500">kaç yaşında?</span>
+        <h2 className="text-3xl sm:text-4xl font-black text-slate-800 mb-3 leading-tight">
+          Çocuğunuz kaç yaşında?
         </h2>
-        <p className="text-gray-500 font-semibold text-base max-w-xs mx-auto">
-          Yaşa özel uzman rehberine ulaşmak için bir seçenek tıklayın
+        <p className="text-slate-500 text-base max-w-xs mx-auto">
+          Yaşa göre bir kategori seçin
         </p>
       </div>
 
@@ -561,8 +559,8 @@ function HomeView({ onSelectAge }) {
         })}
       </div>
 
-      <p className="text-center text-xs text-gray-400 mt-10 font-medium">
-        👩‍⚕️ Bu rehber bir çocuk diş hekimi tarafından hazırlanmıştır ve bir tavsiye niteliği taşımaktadır, doktorunuzla görüşerek daha fazla bilgi alabilirsiniz.
+      <p className="text-center text-xs text-slate-400 mt-10">
+        Bu rehber bilgilendirme amaçlıdır. Tanı ve tedavi için diş hekiminize başvurunuz.
       </p>
     </div>
   );
@@ -585,8 +583,8 @@ function TopicsView({ ageId, onSelectTopic, onBack }) {
         </div>
       </div>
 
-      <h3 className="text-lg font-extrabold text-gray-700 mb-4 text-center">
-        Hangi konuyu merak ediyorsunuz? 🔍
+      <h3 className="text-base font-semibold text-slate-600 mb-4">
+        Konu seçin
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -639,14 +637,14 @@ function InfoCardView({ ageId, topicId, onBack }) {
         {/* Card Body */}
         <div className="bg-white p-6 space-y-6">
           {/* Summary */}
-          <p className="text-gray-700 font-semibold leading-relaxed">
+          <p className="text-slate-700 leading-relaxed">
             {card.summary}
           </p>
 
           {/* Tips */}
           <div>
-            <h3 className={`font-extrabold ${c.text} mb-3 flex items-center gap-2`}>
-              <span>📋</span> Önemli Bilgiler
+            <h3 className="font-semibold text-slate-700 mb-3 text-sm uppercase tracking-wide">
+              Önemli Bilgiler
             </h3>
             <ul className="space-y-3">
               {card.tips.map((tip, i) => {
@@ -655,7 +653,7 @@ function InfoCardView({ ageId, topicId, onBack }) {
                 return (
                   <li key={i} className="flex items-start gap-3">
                     <span className={`mt-1.5 ${c.dot} w-2 h-2 rounded-full flex-shrink-0 inline-block`} />
-                    <span className="text-gray-600 font-semibold leading-snug text-sm">
+                    <span className="text-slate-600 leading-snug text-sm">
                       {tipText}
                       {tipImg && (
                         <img
@@ -673,10 +671,10 @@ function InfoCardView({ ageId, topicId, onBack }) {
 
           {/* Doctor Note */}
           <div className={`${c.noteBg} border-l-4 ${c.noteBorder} p-4 rounded-r-xl`}>
-            <div className={`font-extrabold ${c.text} text-sm mb-1.5 flex items-center gap-1.5`}>
-              <span>👩‍⚕️</span> Uzman Notu
+            <div className="font-semibold text-blue-700 text-xs uppercase tracking-wide mb-1.5">
+              Uzman Notu
             </div>
-            <p className={`${c.noteText} text-sm font-semibold leading-relaxed`}>
+            <p className="text-slate-700 text-sm leading-relaxed">
               {card.note}
             </p>
           </div>
@@ -739,8 +737,8 @@ function App() {
         {step === 'card'   && <InfoCardView ageId={selectedAge} topicId={selectedTopic} onBack={handleBackToTopics} />}
       </main>
       <footer className="text-center py-8 font-medium space-y-1">
-        <p className="text-sm text-gray-600 font-bold">👩‍⚕️ Diş Hekimi Selin Saygılı</p>
-        <p className="text-xs text-gray-400">© 2025 İlk Diş Hekimim · Uzman Pedodonti Rehberi</p>
+        <p className="text-sm text-slate-600">Dt. Selin Saygılı</p>
+        <p className="text-xs text-slate-400">© 2025 İlk Diş Hekimim</p>
       </footer>
     </div>
   );
