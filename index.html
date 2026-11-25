@@ -374,14 +374,19 @@ const TOPICS = {
       id: 'sedation', label: 'Sedasyon ve Anestezi', emoji: '😴',
       card: {
         title: 'Çocuğuma Neden Sedasyon Önerildi?',
-        summary: 'Küçük çocuklar diş tedavisi sırasında hareketsiz kalmakta zorlanabilir. Kapsamlı veya ağrılı bir işlem gerektiren durumlarda sedasyon ya da genel anestezi hem çocuğun hem de hekimin işini kolaylaştıran, güvenli bir seçenektir.',
+        summary: 'Küçük çocuklar diş tedavisi sırasında hareketsiz kalmakta zorlanabilir. Kapsamlı veya ağrılı bir işlem gerektiren durumlarda sedasyon ya da genel anestezi hem çocuğun hem de hekimin işini kolaylaştıran güvenli bir seçenektir. Modern anestezi çocuklar için çok güvenlidir.',
         tips: [
           'Hafif sedasyon: İlaçla uykulu ama uyandırılabilir hale gelir; işlemi hatırlamayabilir',
-          'Derin sedasyon ve genel anestezi: Çocuk tamamen uyur; nefes almasını ayrı bir anestezi uzmanı sürekli takip eder',
+          'Derin sedasyon ve genel anestezi: Çocuk tamamen uyur; kalp hızı, tansiyon ve oksijen doygunluğu ayrı bir uzman tarafından sürekli izlenir',
           'Genel anestezi donanımlı diş kliniklerinde, ameliyathanelerde veya hastanelerde uygulanabilir',
-          'İşlem öncesinde hangi sedasyon seçeneğinin uygulanacağını, ilacı kimin vereceğini ve kimin takip edeceğini sorun',
+          'İşlem öncesi mutlaka bildirin: tüm ilaçlar (bitkisel ürünler dahil), alerjiler, astım veya uyku apnesi gibi solunum sorunları, daha önce anestezi sırasında yaşanan komplikasyon ve ailede anestezi sonrası yüksek ateş öyküsü',
+          'Çocuğun sallanan dişi varsa söyleyin; anestezi sırasında çekilmesi gerekebilir',
+          'İşlemden 4 hafta içinde ateş veya ağır öksürük geçirdiyse ekibi önceden haberdar edin; erteleme gerekebilir',
+          'İşlem sonrası boğaz ağrısı ve hafif bulantı normaldir; solunum tüpünden kaynaklanır, birkaç saatte geçer',
+          'Çocuğa konuşurken yaşına uygun sade bir dil kullanın ("ağrı duymayacaksın", "uyuyacaksın"); küçük çocuklara randevudan 1-2 gün önce anlatmak yeterlidir',
         ],
         note: 'Küçük çocuklarda yaygın ve hızlı ilerleyen çürükler (biberon çürüğü gibi) genellikle genel anestezi altında tek seansta tedavi edilir. Bu hem daha az travmatik hem de çok daha etkilidir.',
+        source: 'American Academy of Pediatrics (AAP), HealthyChildren.org — "Anesthesia or Sedation for Your Child\'s Dental Work?" ve "General Anesthesia for Children: What Parents Need to Know"',
       },
     },
   ],
@@ -806,6 +811,13 @@ function InfoCardView({ ageId, topicId, onBack }) {
               {card.note}
             </p>
           </div>
+
+          {/* Source */}
+          {card.source && (
+            <p className="text-xs text-slate-400 pt-1 border-t border-slate-100">
+              Kaynak: <span className="italic">{card.source}</span>
+            </p>
+          )}
         </div>
       </div>
 
