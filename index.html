@@ -94,6 +94,7 @@ const AGE_GROUPS = [
   { id: '1-3',      label: '1–3 Yaş',   emoji: '🧒', desc: 'Bebeklik dönemi',               colorKey: 'pink'   },
   { id: '3-6',      label: '3–6 Yaş',   emoji: '🧒', desc: 'Okul öncesi dönem',                colorKey: 'sky'    },
   { id: '6-12',     label: '6–12 Yaş',  emoji: '🧑', desc: 'Okul çağı & kalıcı dişler',        colorKey: 'teal'   },
+  { id: '12-18',    label: '12–18 Yaş', emoji: '🧑', desc: 'Ergenlik dönemi & ağız sağlığı',  colorKey: 'purple' },
   { id: 'diseases',  label: 'Çocukluk Hastalıkları', emoji: '🤒', desc: 'Hastalık döneminde ağız bakımı',  colorKey: 'rose'   },
 ];
 
@@ -429,6 +430,95 @@ const TOPICS = {
       },
     },
   ],
+
+  '12-18': [
+    {
+      id: 'braces-care', label: 'Aparey Döneminde Bakım', emoji: '😬',
+      card: {
+        title: 'Aparey Döneminde Diş Bakımı Neden Zorlaşır?',
+        summary: 'Tel apareyler ve braketler plağın tutunmasını kolaylaştırır. Bu dönemde dikkatli fırçalamak, braket çevresinde çürük oluşmasını engeller.',
+        tips: [
+          'Ara yüz fırçası ve süper floss diş ipi, her braketin etrafını temizlemek için gereklidir',
+          'Fırçalama süresi en az 2-3 dakika olmalı',
+          'Yemekten sonra hemen fırçalamak önemli; elinizde fırça yoksa bol su ile çalkalayın',
+          'Florürlü ağız çalkalama suyu mine korumasına katkı sağlar',
+          'Çok sert gıdalar (elma ısırımı, cips kenarı) ve yapışkan şeyler (sakız, karamel) braket kırabilir',
+        ],
+        note: 'Aparey tedavisi bittikten sonra bile retainer kullanmak önemli. Pek çok ergen retainerı atladığı için dişler eski konumuna dönebiliyor.',
+      },
+    },
+    {
+      id: 'sugary-drinks', label: 'Şekerli ve Asitli İçecekler', emoji: '🥤',
+      card: {
+        title: 'Gazlı ve Enerjik İçecekler Dişlere Ne Yapar?',
+        summary: 'Gazlı içeceklerin asidi mine yüzeyini eritir, içindeki şeker ise çürük bakterilerini besler. Sporcu ve enerji içecekleri de sanıldığından çok daha asitli.',
+        tips: [
+          'Kola, meyve suyu, enerji içeceği ve ayranın bile asit içerdiğini unutmayın',
+          'Asitli içecekten hemen sonra fırçalamayın; 30 dakika bekleyin (asitle yumuşayan mine fırça ile daha çok aşınır)',
+          'Pipet kullanmak asidin dişle temas süresini azaltır',
+          'Su en güvenli seçenek; florürlü su ise mineyi aynı zamanda güçlendirir',
+        ],
+        note: 'Ergenlik döneminde içecek tüketimindeki artış, çürük oluşumunu hızlandıran en önemli faktörlerden biri.',
+      },
+    },
+    {
+      id: 'tobacco-hookah', label: 'Sigara, Nargile ve Vaping', emoji: '🚭',
+      card: {
+        title: 'Nargile ve Elektronik Sigara Ağız Sağlığını Nasıl Etkiler?',
+        summary: 'Sigara, nargile ve vaping ağız kuruluğuna yol açar. Tükürük azaldığında bakteri üremesi kolaylaşır ve hem çürük hem de diş eti hastalığı riski artar.',
+        tips: [
+          'Nargile, sigaradan daha az zararlı değil; tam tersine çok daha uzun süreli duman maruziyeti oluşturuyor',
+          'Elektronik sigara ve vaping ürünleri de diş etini tahriş eden maddeler içeriyor',
+          'Diş eti hastalığı sigara kullanan ergenlerde çok daha erken başlayabiliyor',
+          'Ağız kokusu, sigara kullananların en sık şikayeti',
+        ],
+        note: 'Kullanım ne kadar erken başlarsa, diş eti kaybı ve ağız kanseri riski o kadar artıyor. Bu dönemde yapılan konuşmalar fark yaratabilir.',
+      },
+    },
+    {
+      id: 'bruxism', label: 'Diş Gıcırdatma (Bruksizm)', emoji: '😬',
+      card: {
+        title: 'Stres Dişe Vuruyor: Bruksizm Nedir?',
+        summary: 'Bruksizm, genellikle uyku sırasında dişlerin birbiri üzerinde gıcırdatılması ya da sıkılmasıdır. Ergenlik döneminde stres artışıyla sıklaşabilir.',
+        tips: [
+          'Sabah çene yorgunluğu, baş veya şakak ağrısı bruksizmin işareti olabilir',
+          'Zamanla diş boylarında kısalma ve aşınma gözlemlenebilir',
+          'Diş hekimi tarafından yapılan gece apareyi dişleri korur',
+          'Stres yönetimi teknikleri semptomları azaltabilir',
+        ],
+        note: 'Ergenlerde saptanmayan bruksizm, ilerleyen yaşlarda ciddi mine kaybına yol açabilir. Şikayetler varsa diş hekimine mutlaka söyleyin.',
+      },
+    },
+    {
+      id: 'sports-teen', label: 'Spor ve Ağız Koruması', emoji: '⚽',
+      card: {
+        title: 'Apareyken Spor Yaparken Dikkat',
+        summary: 'Telli aparey takarken düşme veya darbe aldığında hem diş hem de iç dudak-yanak yaralanma riski artar. Özel ağız koruyucular hem dişleri hem de apareyin kendisini korur.',
+        tips: [
+          'Aparey varken hazır market ağız koruyucuları çoğunlukla uymaz; özel yaptırın',
+          'Kontak sporlar (futbol, basketbol, dövüş sporları) için koruyucu zorunlu',
+          'Sökülen kalıcı bir diş: sütte ya da tükürükte saklayıp hemen diş hekimine gidin (ilk 30 dakika kritik)',
+          'Kırık ya da yerinden oynamış bir braket de vakit kaybetmeden tedavi edilmeli',
+        ],
+        note: 'Spor yaralanmaları sonucu sökülen kalıcı dişin yerine oturtulabilmesi, ilk yarım saatte diş hekimine ulaşmakla doğrudan ilişkili.',
+      },
+    },
+    {
+      id: 'piercing', label: 'Piercing ve Ağız Sağlığı', emoji: '💎',
+      card: {
+        title: 'Dil ve Dudak Piercingi: Riskler Neler?',
+        summary: 'Dil, dudak veya yanak piercingleri son yıllarda yaygınlaştı. Ancak ağız içindeki bakteri yoğunluğu nedeniyle enfeksiyon riski oldukça yüksek, üstelik metal aksesuarlar dişlere ciddi zarar verebilir.',
+        tips: [
+          'Dildeki metal topa ısırmak diş kırıklarına yol açabilir',
+          'Piercing takıldıktan sonra şişlik, kanama veya ateş varsa hemen doktora gidin',
+          'Uzun süre takılı kalan piercing, diş etinin gerilemesine neden olabilir',
+          'Dil altı piercingi, dişin arkasına sürekli baskı yaparak dişleri kaydırabilir',
+        ],
+        note: 'Aparey tedavisi devam ederken dil piercingi yaptırmak, hem tedaviyi zorlaştırır hem de dişlere zarar verebilir.',
+      },
+    },
+  ],
+
   diseases: [
     {
       id: 'chickenpox', label: 'Suçiçeği', emoji: '🔴',
